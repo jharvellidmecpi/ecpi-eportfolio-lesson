@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Build Your Professional ePortfolio</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <a class="skip-link" href="#lesson-main">Skip to lesson content</a>
+
+  <header class="topbar">
+    <button class="menu-button" id="menuButton" type="button" aria-expanded="false" aria-controls="sidebar">
+      Menu
+    </button>
+    <div class="brand">ECPI <span>Career Portfolio Series</span></div>
+    <div class="lesson-title">Lesson 1: Build Your Professional ePortfolio</div>
+    <div class="progress-wrap" aria-label="Lesson progress">
+      <span class="progress-text" id="progressText">1 of 12</span>
+      <div class="progress-track" aria-hidden="true">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+    </div>
+  </header>
+
+  <nav class="sidebar" id="sidebar" aria-label="Lesson contents">
+    <div class="sidebar-label">Contents</div>
+
+    <button class="nav-link active" data-screen="0" type="button"><span class="nav-number">1</span><span>Welcome</span></button>
+    <button class="nav-link" data-screen="1" type="button"><span class="nav-number">2</span><span>What Is an ePortfolio?</span></button>
+    <button class="nav-link" data-screen="2" type="button"><span class="nav-number">3</span><span>Why It Matters</span></button>
+    <button class="nav-link" data-screen="3" type="button"><span class="nav-number">4</span><span>Recommended Sections</span></button>
+    <button class="nav-link" data-screen="4" type="button"><span class="nav-number">5</span><span>Profile Picture</span></button>
+    <button class="nav-link" data-screen="5" type="button"><span class="nav-number">6</span><span>Color and Design</span></button>
+    <button class="nav-link" data-screen="6" type="button"><span class="nav-number">7</span><span>Professionalism</span></button>
+    <button class="nav-link" data-screen="7" type="button"><span class="nav-number">8</span><span>Build the Skeleton</span></button>
+    <button class="nav-link" data-screen="8" type="button"><span class="nav-number">9</span><span>ePortfolio Coach</span></button>
+    <button class="nav-link" data-screen="9" type="button"><span class="nav-number">10</span><span>Sample Project</span></button>
+    <button class="nav-link" data-screen="10" type="button"><span class="nav-number">11</span><span>Reflection</span></button>
+    <button class="nav-link" data-screen="11" type="button"><span class="nav-number">12</span><span>Knowledge Check</span></button>
+  </nav>
+
+  <main class="main" id="lesson-main">
+    <section class="screen active" data-title="Welcome">
+      <span class="badge">Lesson 1</span>
+      <h1>Build Your Professional ePortfolio</h1>
+
+      <div class="hero">
+        <h2>Showcase your learning. Demonstrate your skills. Launch your career.</h2>
+        <p>
+          Every strong project you complete can become evidence of what you know and what you can do.
+          This lesson introduces the purpose of an ePortfolio and helps you prepare to build a professional
+          digital space that grows with you throughout your program.
+        </p>
+      </div>
+
+      <div class="stat-grid">
+        <div class="stat-card">
+          <strong>30–45 minutes</strong>
+          <span>Estimated lesson time</span>
+        </div>
+        <div class="stat-card">
+          <strong>12 sections</strong>
+          <span>Short, guided learning screens</span>
+        </div>
+        <div class="stat-card">
+          <strong>1 first milestone</strong>
+          <span>Create your ePortfolio skeleton</span>
+        </div>
+      </div>
+
+      <div class="callout">
+        <strong>Scenario:</strong>
+        Two applicants have similar degrees and résumés. One applicant also shares a professional website
+        containing project examples, skill evidence, reflections, and credentials. Which applicant gives
+        the employer more useful information?
+      </div>
+
+      <div class="button-row">
+        <button class="primary-button" type="button" data-jump="1">Start Lesson</button>
+        <a class="secondary-button" href="https://jharvellidmecpi.github.io/eportfolio/" target="_blank" rel="noopener">
+          View Sample Portfolio
+        </a>
+      </div>
+    </section>
+
+    <section class="screen" data-title="What Is an ePortfolio?">
+      <span class="badge">Section 2</span>
+      <h1>What Is an ePortfolio?</h1>
+
+      <p>
+        An ePortfolio is a professional digital collection of your academic work, technical projects,
+        achievements, skills, experiences, and reflections. It gives you a place to present evidence of
+        what you know and what you can do.
+      </p>
+
+      <div class="card-grid">
+        <div class="reveal-card">
+          <button type="button" aria-expanded="false">What is it?</button>
+          <div class="reveal-content">
+            <p>A professional website that organizes your strongest evidence, accomplishments, and growth.</p>
+          </div>
+        </div>
+
+        <div class="reveal-card">
+          <button type="button" aria-expanded="false">Who is the audience?</button>
+          <div class="reveal-content">
+            <p>Employers, internship coordinators, professional contacts, graduate programs, and others evaluating your work.</p>
+          </div>
+        </div>
+
+        <div class="reveal-card">
+          <button type="button" aria-expanded="false">What belongs in it?</button>
+          <div class="reveal-content">
+            <p>Selected projects, skill evidence, reflections, credentials, résumé materials, and professional contact links.</p>
+          </div>
+        </div>
+
+        <div class="reveal-card">
+          <button type="button" aria-expanded="false">How does it grow?</button>
+          <div class="reveal-content">
+            <p>You add and improve content throughout your program instead of trying to build everything immediately before graduation.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="warning callout">
+        An ePortfolio is not simply an online résumé, a storage folder full of unrelated assignments,
+        a personal social media page, or a place to publish confidential information.
+      </div>
+    </section>
+
+    <section class="screen" data-title="Why It Matters">
+      <span class="badge">Section 3</span>
+      <h1>Why Is an ePortfolio Important?</h1>
+
+      <p>
+        A résumé summarizes your qualifications. An ePortfolio gives you room to demonstrate them through
+        real examples, explanations, and reflections.
+      </p>
+
+      <table class="compare">
+        <thead>
+          <tr><th>Résumé</th><th>ePortfolio</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Summarizes experience</td><td>Demonstrates experience</td></tr>
+          <tr><td>Lists skills</td><td>Shows evidence of skills</td></tr>
+          <tr><td>Usually one or two pages</td><td>Allows greater depth</td></tr>
+          <tr><td>Tells employers what you did</td><td>Helps employers see what you produced</td></tr>
+          <tr><td>Updated periodically</td><td>Grows throughout your program</td></tr>
+        </tbody>
+      </table>
+
+      <div class="two-col">
+        <div class="card">
+          <h3>What an ePortfolio can help you do</h3>
+          <ul>
+            <li>Preserve strong academic work.</li>
+            <li>Prepare for interviews.</li>
+            <li>Connect coursework to career readiness.</li>
+            <li>Show accomplishments that do not fit on a résumé.</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>What employers can learn</h3>
+          <ul>
+            <li>How you solve problems.</li>
+            <li>How clearly you communicate.</li>
+            <li>What tools and technologies you use.</li>
+            <li>How you reflect and improve.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="quiz-question" data-inline-question="resume">
+        <h3>Quick Check</h3>
+        <p><strong>Which statement best describes the relationship between a résumé and an ePortfolio?</strong></p>
+        <label class="quiz-option"><input type="radio" name="resume" value="a"> They are exactly the same.</label>
+        <label class="quiz-option"><input type="radio" name="resume" value="b"> A résumé summarizes qualifications, while an ePortfolio provides evidence and context.</label>
+        <label class="quiz-option"><input type="radio" name="resume" value="c"> An ePortfolio replaces every need for a résumé.</label>
+        <button class="primary-button check-inline" type="button" data-answer="b">Check Answer</button>
+        <div class="feedback" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section class="screen" data-title="Recommended Sections">
+      <span class="badge">Section 4</span>
+      <h1>Recommended ePortfolio Sections</h1>
+
+      <p>
+        Your first milestone is a skeleton: the basic structure you will gradually develop. Open each
+        section below to see its purpose and recommended content.
+      </p>
+
+      <div class="accordion">
+        <div class="accordion-item">
+          <button class="accordion-trigger" type="button" aria-expanded="false">Home <span>+</span></button>
+          <div class="accordion-panel">
+            <p>Include your name, degree program, professional interests, career direction, and a short value statement.</p>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-trigger" type="button" aria-expanded="false">About Me <span>+</span></button>
+          <div class="accordion-panel">
+            <p>Explain your academic background, career goals, strengths, field interests, and professional motivation.</p>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-trigger" type="button" aria-expanded="false">Skills <span>+</span></button>
+          <div class="accordion-panel">
+            <p>Include both technical skills and professional skills, supported by project evidence whenever possible.</p>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-trigger" type="button" aria-expanded="false">Projects <span>+</span></button>
+          <div class="accordion-panel">
+            <p>Each project should include a title, course, overview, purpose, process, tools, skills, results, reflection, and artifact link.</p>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-trigger" type="button" aria-expanded="false">Résumé <span>+</span></button>
+          <div class="accordion-panel">
+            <p>Provide a current PDF version that visitors can view or download.</p>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-trigger" type="button" aria-expanded="false">Certifications and Credentials <span>+</span></button>
+          <div class="accordion-panel">
+            <p>Include industry certifications, digital badges, licenses, academic honors, and relevant training.</p>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-trigger" type="button" aria-expanded="false">Professional Growth <span>+</span></button>
+          <div class="accordion-panel">
+            <p>Document reflections, milestones, career goals, improvements after feedback, and future development plans.</p>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-trigger" type="button" aria-expanded="false">Contact <span>+</span></button>
+          <div class="accordion-panel">
+            <p>Use a professional email address and appropriate professional profiles such as LinkedIn or GitHub.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="warning callout">
+        Never publish your home address, student identification number, passwords, personal schedule,
+        confidential workplace information, or other sensitive details.
+      </div>
+    </section>
+
+    <section class="screen" data-title="Profile Picture">
+  <span class="badge">Section 5</span>
+  <h1>Create a Professional First Impression</h1>
+
+  <p class="section-intro">
+    Your profile image is often one of the first elements visitors notice.
+    Choose an image that supports the professional identity you want your
+    ePortfolio to communicate.
+  </p>
+
+  <div class="profile-guidance-grid">
+    <article class="profile-example recommended">
+      <div class="profile-placeholder" aria-hidden="true">
+        <span>Professional<br>Photo</span>
+      </div>
+
+      <div>
+        <span class="example-status">Recommended</span>
+        <h2>Professional Profile Photo</h2>
+
+        <ul>
+          <li>Recent head-and-shoulders image</li>
+          <li>Good lighting</li>
+          <li>Simple, uncluttered background</li>
+          <li>Professional or business-casual clothing</li>
+          <li>Natural and approachable expression</li>
+          <li>Clear, high-quality image</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="profile-example revise">
+      <div class="profile-placeholder alternate" aria-hidden="true">
+        <span>Photo<br>to Revise</span>
+      </div>
+
+      <div>
+        <span class="example-status">Needs Revision</span>
+        <h2>Avoid These Choices</h2>
+
+        <ul>
+          <li>Group photographs</li>
+          <li>Party or vacation pictures</li>
+          <li>Heavy filters</li>
+          <li>Sunglasses or distracting accessories</li>
+          <li>Bathroom or car selfies</li>
+          <li>Images with someone cropped out</li>
+        </ul>
+      </div>
+    </article>
+  </div>
+
+  <div class="alternative-profile">
+    <div class="initials-example" aria-hidden="true">ST</div>
+
+    <div>
+      <h2>A Photograph Is Optional</h2>
+
+      <p>
+        You do not have to publish a personal photograph. A professional
+        alternative may be more appropriate for your preferences or privacy
+        needs.
+      </p>
+
+      <p>Professional alternatives include:</p>
+
+      <ul>
+        <li>Your initials in a clean monogram</li>
+        <li>A professionally designed avatar</li>
+        <li>A simple field-related icon</li>
+        <li>A personal logo appropriate for professional use</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="quiz-question" data-inline-question="photo">
+    <h2>Professional or Needs Revision?</h2>
+
+    <p>
+      <strong>
+        Which option would create the strongest professional first impression?
+      </strong>
+    </p>
+
+    <label class="quiz-option">
+      <input type="radio" name="photo" value="a">
+      A heavily filtered group picture from a social event
+    </label>
+
+    <label class="quiz-option">
+      <input type="radio" name="photo" value="b">
+      A recent, clear head-and-shoulders image with a simple background
+    </label>
+
+    <label class="quiz-option">
+      <input type="radio" name="photo" value="c">
+      A low-resolution bathroom mirror selfie
+    </label>
+
+    <button
+      class="primary-button check-inline"
+      type="button"
+      data-answer="b"
+    >
+      Check Answer
+    </button>
+
+    <div class="feedback" aria-live="polite"></div>
+  </div>
+</section>
+
+    <section class="screen" data-title="Color and Design">
+      <span class="badge">Section 6</span>
+      <h1>Choosing a Professional Color Palette</h1>
+
+      <p>
+        Use one primary color, one secondary color, one accent color, one light background, and one dark
+        text color. Consistency is more important than using many colors.
+      </p>
+
+      <div class="three-col">
+        <div class="card">
+          <h3>Professional Technology</h3>
+          <div class="palette" aria-label="Navy, blue, teal, light gray, dark slate">
+            <span class="swatch" style="background:#17365d"></span>
+            <span class="swatch" style="background:#2563a6"></span>
+            <span class="swatch" style="background:#168a8a"></span>
+            <span class="swatch" style="background:#f5f7fa"></span>
+            <span class="swatch" style="background:#263442"></span>
+          </div>
+          <p>Balanced, clean, and appropriate for cybersecurity, IT, networking, and business technology.</p>
+        </div>
+
+        <div class="card">
+          <h3>Cybersecurity Dark</h3>
+          <div class="palette" aria-label="Charcoal, deep blue, muted teal, white, gray">
+            <span class="swatch" style="background:#1f2933"></span>
+            <span class="swatch" style="background:#173b6c"></span>
+            <span class="swatch" style="background:#2a8c82"></span>
+            <span class="swatch" style="background:#ffffff"></span>
+            <span class="swatch" style="background:#d9e1e8"></span>
+          </div>
+          <p>Effective when text contrast remains readable and dark backgrounds are used consistently.</p>
+        </div>
+
+        <div class="card">
+          <h3>Clean Business</h3>
+          <div class="palette" aria-label="Navy, medium blue, muted gold, white, dark gray">
+            <span class="swatch" style="background:#203864"></span>
+            <span class="swatch" style="background:#4472c4"></span>
+            <span class="swatch" style="background:#c9a227"></span>
+            <span class="swatch" style="background:#ffffff"></span>
+            <span class="swatch" style="background:#333333"></span>
+          </div>
+          <p>A polished option for business, project management, analytics, and leadership-focused portfolios.</p>
+        </div>
+      </div>
+
+      <div class="callout">
+        Avoid neon colors as the main palette, changing themes on every page, low-contrast text, or decorative
+        colors that do not have a clear purpose.
+      </div>
+    </section>
+
+    <section class="screen" data-title="Professionalism">
+      <span class="badge">Section 7</span>
+      <h1>Maintaining Professionalism</h1>
+
+      <div class="two-col">
+        <div class="card">
+          <h3>Writing and Content</h3>
+          <ul>
+            <li>Use complete sentences and proofread carefully.</li>
+            <li>Use an authentic professional voice.</li>
+            <li>Explain technical concepts clearly.</li>
+            <li>Remove assignment directions before publishing.</li>
+            <li>Never publish confidential information.</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>Design and Maintenance</h3>
+          <ul>
+            <li>Keep navigation and colors consistent.</li>
+            <li>Use readable fonts and enough white space.</li>
+            <li>Test every link and button.</li>
+            <li>Check the site on a phone.</li>
+            <li>Remove outdated or unfinished content before sharing professionally.</li>
+          </ul>
+        </div>
+      </div>
+
+      <h2>Is My Portfolio Professional?</h2>
+
+      <div class="checklist" id="professionalChecklist">
+        <label class="check-row"><input type="checkbox"> <span>My writing has been proofread.</span></label>
+        <label class="check-row"><input type="checkbox"> <span>My links and buttons work.</span></label>
+        <label class="check-row"><input type="checkbox"> <span>My color palette is consistent.</span></label>
+        <label class="check-row"><input type="checkbox"> <span>My project descriptions include context.</span></label>
+        <label class="check-row"><input type="checkbox"> <span>My contact information is appropriate.</span></label>
+        <label class="check-row"><input type="checkbox"> <span>I removed private or confidential information.</span></label>
+        <label class="check-row"><input type="checkbox"> <span>My site is readable on a phone.</span></label>
+        <label class="check-row"><input type="checkbox"> <span>My content sounds like me.</span></label>
+
+        <div class="check-progress">
+          <div class="mini-track" aria-hidden="true"><div class="mini-fill" id="checklistFill"></div></div>
+          <strong id="checklistText">0 of 8</strong>
+        </div>
+      </div>
+    </section>
+
+    <section class="screen" data-title="Build the Skeleton">
+      <span class="badge">Section 8</span>
+      <h1>Build Your Skeleton ePortfolio With Vibe Coding</h1>
+
+      <p>
+        Vibe coding is a conversational approach to website creation. You describe the site you want,
+        the required sections, and the style you prefer. An AI assistant generates starter HTML and CSS
+        that you review, personalize, test, and improve.
+      </p>
+
+      <div class="stepper">
+        <div class="step"><span class="step-number">1</span><div><h3>Plan</h3><p>Choose your displayed name, degree program, career direction, required sections, colors, and profile-image approach.</p></div></div>
+        <div class="step"><span class="step-number">2</span><div><h3>Prompt</h3><p>Describe the skeleton site, accessibility expectations, and placeholders you need.</p></div></div>
+        <div class="step"><span class="step-number">3</span><div><h3>Generate</h3><p>Ask the assistant to create starter HTML and CSS compatible with GitHub Pages.</p></div></div>
+        <div class="step"><span class="step-number">4</span><div><h3>Review</h3><p>Verify that sections, navigation, colors, accessibility, and privacy protections are appropriate.</p></div></div>
+        <div class="step"><span class="step-number">5</span><div><h3>Personalize</h3><p>Replace placeholders with your real information, work, goals, skills, and reflections.</p></div></div>
+        <div class="step"><span class="step-number">6</span><div><h3>Publish</h3><p>Commit the files to GitHub and publish them through GitHub Pages.</p></div></div>
+      </div>
+
+      <h2>Starter Prompt</h2>
+      <pre id="starterPrompt">Create an accessible, mobile-responsive skeleton ePortfolio using HTML and CSS.
+
+Include these sections:
+
+Home
+About Me
+Skills
+Projects
+Resume
+Certifications
+Professional Growth
+Contact
+
+Use a professional technology-inspired design with a consistent color palette.
+
+Include placeholder instructions that clearly tell me what to replace.
+
+Use semantic HTML, keyboard-accessible navigation, visible focus indicators, readable text contrast, and a skip-to-content link.
+
+Do not invent achievements, certifications, work experience, contact information, or skills.
+
+Create one project placeholder that includes fields for the project title, course, overview, skills demonstrated, reflection, and artifact link.
+
+Make the files compatible with GitHub Pages.</pre>
+
+      <div class="button-row">
+        <button class="primary-button" id="copyPromptButton" type="button">Copy Starter Prompt</button>
+      </div>
+
+      <div class="warning callout">
+        The AI creates the scaffold. You supply the identity, evidence, reflection, accuracy, and professional judgment.
+      </div>
+    </section>
+
+    <section class="screen" data-title="ePortfolio Coach">
+      <span class="badge">Section 9</span>
+      <h1>Meet the ECPI ePortfolio Coach</h1>
+
+      <div class="assistant-box">
+        <h2>Plan, build, review, and improve your ePortfolio</h2>
+        <p>
+          The ECPI ePortfolio Coach can help you brainstorm sections, refine project descriptions,
+          identify skills demonstrated by your coursework, develop reflection responses, review
+          professional tone, and generate accessible starter code.
+        </p>
+
+        <div class="button-row">
+          <a
+            class="primary-button"
+            href="https://genai.ecpi.edu/assistants/PDT-wP51aMOMV1Lw"
+            target="_blank"
+            rel="noopener"
+          >
+            Open the ECPI ePortfolio Coach
+          </a>
+        </div>
+
+        
+      </div>
+
+      <h2>Use the assistant responsibly</h2>
+      <p>
+        Review every recommendation, verify accuracy, protect private information, and revise the final
+        content so it reflects your authentic experiences and professional voice.
+      </p>
+    </section>
+
+    <section class="screen" data-title="Sample Project">
+      <span class="badge">Section 10</span>
+      <h1>From Assignment File to Employer-Ready Project</h1>
+
+      <p>
+        A strong portfolio does not merely attach an assignment. It introduces the work, explains the
+        skills it demonstrates, reflects on the learning, and then links to the artifact as evidence.
+      </p>
+
+      <div class="before-after">
+        <div class="card">
+          <h2>Before</h2>
+          <p><strong>CYB320_Final_Paper_Torres_v2.pdf</strong></p>
+          <p>A file name alone does not explain the project, the skills used, or why the work matters.</p>
+        </div>
+
+        <div class="arrow" aria-hidden="true">→</div>
+
+        <div class="card">
+          <h2>After</h2>
+          <p><strong>Network Segmentation Through VLAN Implementation and Inter-VLAN Routing</strong></p>
+          <ul>
+            <li>Project overview</li>
+            <li>Problem and proposed solution</li>
+            <li>Skills and technologies</li>
+            <li>Reflection</li>
+            <li>Link to the full paper</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="button-row">
+        <a class="primary-button" href="https://jharvellidmecpi.github.io/eportfolio/projects/cyb320.html" target="_blank" rel="noopener">
+          View the CYB320 Sample Project
+        </a>
+      </div>
+    </section>
+
+    <section class="screen" data-title="Reflection">
+      <span class="badge">Section 11</span>
+      <h1>Reflection</h1>
+
+      <div class="callout">
+        <strong>Prompt:</strong>
+        What do you want an employer or professional contact to understand about you after viewing your ePortfolio?
+      </div>
+
+      <p>Consider these questions:</p>
+      <ul>
+        <li>What types of work do you hope to showcase?</li>
+        <li>Which skills do you want to demonstrate?</li>
+        <li>What professional impression should your design create?</li>
+        <li>What is one section you can begin developing now?</li>
+      </ul>
+
+      <label for="reflectionText"><strong>Draft your response</strong></label>
+      <textarea id="reflectionText" placeholder="Type your reflection here..."></textarea>
+
+      <div class="button-row">
+        <button class="primary-button" id="copyReflectionButton" type="button">Copy Reflection</button>
+        <button class="ghost-button" id="clearReflectionButton" type="button">Clear</button>
+      </div>
+
+      <div class="warning callout">
+        This text area is for drafting. A standalone HTML lesson does not automatically submit your response to Canvas.
+      </div>
+    </section>
+
+    <section class="screen" data-title="Knowledge Check">
+      <span class="badge">Section 12</span>
+      <h1>Final Knowledge Check</h1>
+
+      <p>Select the best answer for each question, then submit your responses.</p>
+
+      <div class="quiz-question">
+        <h3>1. What is the primary purpose of an ePortfolio?</h3>
+        <label class="quiz-option"><input type="radio" name="q1" value="a"> To store every assignment without explanation.</label>
+        <label class="quiz-option"><input type="radio" name="q1" value="b"> To provide professional evidence of skills, learning, accomplishments, and growth.</label>
+        <label class="quiz-option"><input type="radio" name="q1" value="c"> To replace all professional communication.</label>
+      </div>
+
+      <div class="quiz-question">
+        <h3>2. Which project presentation is strongest?</h3>
+        <label class="quiz-option"><input type="radio" name="q2" value="a"> A file link with no explanation.</label>
+        <label class="quiz-option"><input type="radio" name="q2" value="b"> A project page with context, skills, reflection, and an artifact link.</label>
+        <label class="quiz-option"><input type="radio" name="q2" value="c"> A screenshot with no title.</label>
+      </div>
+
+      <div class="quiz-question">
+        <h3>3. Which information should not be published?</h3>
+        <label class="quiz-option"><input type="radio" name="q3" value="a"> A professional email address.</label>
+        <label class="quiz-option"><input type="radio" name="q3" value="b"> A public LinkedIn profile.</label>
+        <label class="quiz-option"><input type="radio" name="q3" value="c"> A student identification number, password, or home address.</label>
+      </div>
+
+      <div class="quiz-question">
+        <h3>4. What is your responsibility when using AI?</h3>
+        <label class="quiz-option"><input type="radio" name="q4" value="a"> Publish everything without reviewing it.</label>
+        <label class="quiz-option"><input type="radio" name="q4" value="b"> Review, personalize, verify, and take responsibility for the final content.</label>
+        <label class="quiz-option"><input type="radio" name="q4" value="c"> Allow the AI to invent credentials.</label>
+      </div>
+
+      <div class="quiz-question">
+        <h3>5. Which color strategy is most professional?</h3>
+        <label class="quiz-option"><input type="radio" name="q5" value="a"> A small, consistent palette with readable contrast and purposeful accent colors.</label>
+        <label class="quiz-option"><input type="radio" name="q5" value="b"> A different neon theme on every page.</label>
+        <label class="quiz-option"><input type="radio" name="q5" value="c"> Light gray text on a white background.</label>
+      </div>
+
+      <button class="primary-button" id="submitQuizButton" type="button">Submit Knowledge Check</button>
+
+      <div class="feedback" id="quizResult" aria-live="polite"></div>
+    </section>
+  </main>
+
+  <div class="bottom-nav" aria-label="Lesson navigation">
+    <button class="prev" id="prevButton" type="button">Previous</button>
+    <span class="screen-count" id="screenCount">Screen 1 of 12</span>
+    <button class="next" id="nextButton" type="button">Next</button>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
