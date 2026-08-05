@@ -1,0 +1,1471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Build Your Professional ePortfolio</title>
+  <style>
+    :root {
+      --navy: #17365d;
+      --blue: #2563a6;
+      --teal: #168a8a;
+      --gold: #d9a72e;
+      --coral: #c74c47;
+      --bg: #f5f7fa;
+      --panel: #ffffff;
+      --text: #263442;
+      --muted: #5f6b76;
+      --border: #d8dee6;
+      --soft-blue: #eaf1f8;
+      --soft-teal: #e4f3f3;
+      --soft-gold: #fff7db;
+      --soft-coral: #fbeaea;
+      --sidebar-width: 290px;
+      --header-height: 68px;
+      --radius: 14px;
+      --shadow: 0 8px 24px rgba(23, 54, 93, 0.08);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.65;
+    }
+
+    button, input, textarea, select { font: inherit; }
+
+    a { color: var(--blue); }
+
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible,
+    textarea:focus-visible,
+    select:focus-visible {
+      outline: 3px solid var(--gold);
+      outline-offset: 3px;
+    }
+
+    .skip-link {
+      position: fixed;
+      left: -9999px;
+      top: 8px;
+      z-index: 1000;
+      padding: 10px 14px;
+      background: var(--panel);
+      color: var(--navy);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+    }
+
+    .skip-link:focus { left: 12px; }
+
+    .topbar {
+      position: fixed;
+      inset: 0 0 auto 0;
+      min-height: var(--header-height);
+      background: var(--navy);
+      color: white;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      padding: 10px 22px;
+      z-index: 200;
+      box-shadow: 0 2px 12px rgba(0,0,0,.18);
+    }
+
+    .menu-button {
+      display: none;
+      border: 1px solid rgba(255,255,255,.35);
+      background: transparent;
+      color: white;
+      border-radius: 8px;
+      padding: 8px 10px;
+      cursor: pointer;
+    }
+
+    .brand {
+      font-weight: 800;
+      letter-spacing: .02em;
+      white-space: nowrap;
+    }
+
+    .brand span { font-weight: 400; opacity: .82; }
+
+    .lesson-title {
+      flex: 1;
+      font-size: .95rem;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      color: rgba(255,255,255,.88);
+    }
+
+    .progress-wrap {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 220px;
+    }
+
+    .progress-text {
+      font-size: .82rem;
+      color: rgba(255,255,255,.8);
+      white-space: nowrap;
+    }
+
+    .progress-track {
+      flex: 1;
+      height: 8px;
+      background: rgba(255,255,255,.2);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      width: 0;
+      height: 100%;
+      background: #8cd8d4;
+      transition: width .25s ease;
+    }
+
+    .sidebar {
+      position: fixed;
+      top: var(--header-height);
+      left: 0;
+      bottom: 0;
+      width: var(--sidebar-width);
+      background: #102a49;
+      color: white;
+      overflow-y: auto;
+      z-index: 150;
+      padding: 18px 0 32px;
+    }
+
+    .sidebar-label {
+      padding: 0 20px 10px;
+      color: rgba(255,255,255,.5);
+      font-size: .75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+    }
+
+    .nav-link {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      width: 100%;
+      padding: 11px 18px;
+      border: 0;
+      border-left: 4px solid transparent;
+      background: transparent;
+      color: rgba(255,255,255,.73);
+      text-align: left;
+      cursor: pointer;
+    }
+
+    .nav-link:hover { background: rgba(255,255,255,.06); }
+
+    .nav-link.active {
+      background: rgba(140,216,212,.11);
+      border-left-color: #8cd8d4;
+      color: white;
+    }
+
+    .nav-number {
+      flex: 0 0 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.12);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .75rem;
+      font-weight: 700;
+    }
+
+    .nav-link.active .nav-number {
+      background: #8cd8d4;
+      color: #102a49;
+    }
+
+    .nav-link.completed .nav-number {
+      background: var(--teal);
+      color: white;
+    }
+
+    .main {
+      margin-left: var(--sidebar-width);
+      padding-top: var(--header-height);
+      min-height: 100vh;
+    }
+
+    .screen {
+      display: none;
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 46px 44px 110px;
+      animation: fadeIn .25s ease;
+    }
+
+    .screen.active { display: block; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 5px 11px;
+      border-radius: 999px;
+      background: var(--soft-blue);
+      color: var(--blue);
+      font-size: .75rem;
+      font-weight: 800;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      margin: 0 0 16px;
+      color: var(--navy);
+      line-height: 1.18;
+      font-size: clamp(2rem, 5vw, 3.25rem);
+    }
+
+    h2 {
+      color: var(--navy);
+      margin-top: 30px;
+      margin-bottom: 12px;
+      line-height: 1.25;
+    }
+
+    h3 { color: var(--navy); }
+
+    p { margin: 0 0 15px; color: #43505d; }
+
+    .hero {
+      background: linear-gradient(135deg, var(--navy), #24517e);
+      color: white;
+      border-radius: var(--radius);
+      padding: 34px;
+      margin: 22px 0 26px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero h2, .hero p { color: white; }
+    .hero p { color: rgba(255,255,255,.9); }
+
+    .stat-grid,
+    .card-grid,
+    .two-col,
+    .three-col {
+      display: grid;
+      gap: 18px;
+      margin: 22px 0;
+    }
+
+    .stat-grid { grid-template-columns: repeat(3, 1fr); }
+    .card-grid { grid-template-columns: repeat(2, 1fr); }
+    .two-col { grid-template-columns: repeat(2, 1fr); }
+    .three-col { grid-template-columns: repeat(3, 1fr); }
+
+    .card,
+    .stat-card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px;
+      box-shadow: var(--shadow);
+    }
+
+    .stat-card strong {
+      display: block;
+      font-size: 1.4rem;
+      color: var(--navy);
+      margin-bottom: 4px;
+    }
+
+    .callout {
+      border-left: 5px solid var(--teal);
+      background: var(--soft-teal);
+      border-radius: 0 10px 10px 0;
+      padding: 18px 20px;
+      margin: 20px 0;
+    }
+
+    .warning {
+      border-left-color: var(--gold);
+      background: var(--soft-gold);
+    }
+
+    .reveal-card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .reveal-card button {
+      width: 100%;
+      border: 0;
+      background: var(--blue);
+      color: white;
+      text-align: left;
+      padding: 16px 18px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .reveal-content {
+      display: none;
+      padding: 18px;
+    }
+
+    .reveal-card.open .reveal-content { display: block; }
+
+    .compare {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .compare th,
+    .compare td {
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--border);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .compare th {
+      background: var(--navy);
+      color: white;
+    }
+
+    .accordion {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: white;
+      box-shadow: var(--shadow);
+      margin: 20px 0;
+    }
+
+    .accordion-item + .accordion-item {
+      border-top: 1px solid var(--border);
+    }
+
+    .accordion-trigger {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+      border: 0;
+      background: white;
+      color: var(--navy);
+      text-align: left;
+      padding: 16px 18px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .accordion-trigger[aria-expanded="true"] {
+      background: var(--soft-blue);
+    }
+
+    .accordion-panel {
+      display: none;
+      padding: 0 18px 18px;
+    }
+
+    .accordion-trigger[aria-expanded="true"] + .accordion-panel {
+      display: block;
+    }
+
+    .option-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin: 20px 0;
+    }
+
+    .choice-card {
+      border: 2px solid var(--border);
+      background: white;
+      border-radius: 12px;
+      padding: 18px;
+    }
+
+    .choice-card.correct { border-color: var(--teal); background: var(--soft-teal); }
+    .choice-card.needs-work { border-color: var(--gold); background: var(--soft-gold); }
+
+    .palette {
+      display: flex;
+      gap: 6px;
+      margin: 12px 0;
+    }
+
+    .swatch {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      border: 1px solid rgba(0,0,0,.12);
+    }
+
+    .checklist {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px;
+      box-shadow: var(--shadow);
+    }
+
+    .check-row {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .check-row:last-child { border-bottom: 0; }
+    .check-row input { margin-top: 5px; }
+
+    .check-progress {
+      margin-top: 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .mini-track {
+      flex: 1;
+      height: 10px;
+      border-radius: 999px;
+      background: #e6ebf0;
+      overflow: hidden;
+    }
+
+    .mini-fill {
+      height: 100%;
+      width: 0;
+      background: var(--teal);
+      transition: width .2s ease;
+    }
+
+    .stepper {
+      display: grid;
+      gap: 14px;
+      margin: 20px 0;
+    }
+
+    .step {
+      display: grid;
+      grid-template-columns: 46px 1fr;
+      gap: 14px;
+      align-items: start;
+    }
+
+    .step-number {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: var(--blue);
+      color: white;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+    }
+
+    pre {
+      white-space: pre-wrap;
+      word-break: break-word;
+      background: #102a49;
+      color: #f6f8fa;
+      border-radius: 12px;
+      padding: 18px;
+      overflow-x: auto;
+      font-size: .93rem;
+    }
+
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin: 18px 0;
+    }
+
+    .primary-button,
+    .secondary-button,
+    .ghost-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      border-radius: 9px;
+      padding: 10px 17px;
+      font-weight: 800;
+      text-decoration: none;
+      cursor: pointer;
+      border: 2px solid transparent;
+    }
+
+    .primary-button {
+      background: var(--blue);
+      color: white;
+    }
+
+    .primary-button:hover { background: var(--navy); }
+
+    .secondary-button {
+      background: var(--teal);
+      color: white;
+    }
+
+    .secondary-button:hover { background: #0f6b6b; }
+
+    .ghost-button {
+      background: white;
+      color: var(--blue);
+      border-color: var(--blue);
+    }
+
+    .assistant-box {
+      background: linear-gradient(135deg, var(--soft-blue), var(--soft-teal));
+      border: 1px solid #bfd7e6;
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .before-after {
+      display: grid;
+      grid-template-columns: 1fr 70px 1fr;
+      gap: 16px;
+      align-items: center;
+      margin: 20px 0;
+    }
+
+    .arrow {
+      text-align: center;
+      font-size: 2rem;
+      color: var(--teal);
+      font-weight: 800;
+    }
+
+    textarea {
+      width: 100%;
+      min-height: 170px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px;
+      background: white;
+      color: var(--text);
+      resize: vertical;
+    }
+
+    .quiz-question {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      margin-bottom: 18px;
+      box-shadow: var(--shadow);
+    }
+
+    .quiz-option {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      padding: 10px 0;
+    }
+
+    .feedback {
+      display: none;
+      margin-top: 12px;
+      border-radius: 8px;
+      padding: 12px 14px;
+      font-weight: 700;
+    }
+
+    .feedback.show { display: block; }
+    .feedback.good { background: var(--soft-teal); color: #0d6666; }
+    .feedback.bad { background: var(--soft-coral); color: #87332f; }
+
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: var(--sidebar-width);
+      right: 0;
+      min-height: 76px;
+      padding: 12px 28px;
+      background: white;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      z-index: 140;
+      box-shadow: 0 -3px 16px rgba(0,0,0,.06);
+    }
+
+    .bottom-nav button {
+      border: 0;
+      border-radius: 9px;
+      padding: 11px 18px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .prev { background: #e9edf2; color: var(--text); }
+    .next { background: var(--blue); color: white; }
+    .bottom-nav button:disabled { opacity: .35; cursor: not-allowed; }
+
+    .screen-count { color: var(--muted); font-size: .9rem; }
+
+    .sr-only {
+      position: absolute !important;
+      width: 1px !important;
+      height: 1px !important;
+      padding: 0 !important;
+      margin: -1px !important;
+      overflow: hidden !important;
+      clip: rect(0, 0, 0, 0) !important;
+      white-space: nowrap !important;
+      border: 0 !important;
+    }
+
+    @media (max-width: 900px) {
+      :root { --sidebar-width: 0px; }
+
+      .menu-button { display: inline-block; }
+
+      .sidebar {
+        width: 290px;
+        transform: translateX(-100%);
+        transition: transform .25s ease;
+      }
+
+      .sidebar.open { transform: translateX(0); }
+
+      .main { margin-left: 0; }
+      .bottom-nav { left: 0; }
+
+      .stat-grid,
+      .three-col,
+      .option-grid { grid-template-columns: 1fr; }
+
+      .card-grid,
+      .two-col { grid-template-columns: 1fr; }
+
+      .before-after {
+        grid-template-columns: 1fr;
+      }
+
+      .arrow { transform: rotate(90deg); }
+
+      .progress-wrap { min-width: 150px; }
+    }
+
+    @media (max-width: 640px) {
+      .lesson-title { display: none; }
+      .progress-wrap { min-width: 130px; }
+      .screen { padding: 30px 18px 105px; }
+      .topbar { padding-inline: 12px; }
+      .hero { padding: 24px; }
+      .bottom-nav { padding: 10px 14px; }
+      .screen-count { display: none; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip-link" href="#lesson-main">Skip to lesson content</a>
+
+  <header class="topbar">
+    <button class="menu-button" id="menuButton" type="button" aria-expanded="false" aria-controls="sidebar">
+      Menu
+    </button>
+    <div class="brand">ECPI <span>Career Portfolio Series</span></div>
+    <div class="lesson-title">Lesson 1: Build Your Professional ePortfolio</div>
+    <div class="progress-wrap" aria-label="Lesson progress">
+      <span class="progress-text" id="progressText">1 of 12</span>
+      <div class="progress-track" aria-hidden="true">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+    </div>
+  </header>
+
+  <nav class="sidebar" id="sidebar" aria-label="Lesson contents">
+    <div class="sidebar-label">Contents</div>
+
+    <button class="nav-link active" data-screen="0" type="button"><span class="nav-number">1</span><span>Welcome</span></button>
+    <button class="nav-link" data-screen="1" type="button"><span class="nav-number">2</span><span>What Is an ePortfolio?</span></button>
+    <button class="nav-link" data-screen="2" type="button"><span class="nav-number">3</span><span>Why It Matters</span></button>
+    <button class="nav-link" data-screen="3" type="button"><span class="nav-number">4</span><span>Recommended Sections</span></button>
+    <button class="nav-link" data-screen="4" type="button"><span class="nav-number">5</span><span>Profile Picture</span></button>
+    <button class="nav-link" data-screen="5" type="button"><span class="nav-number">6</span><span>Color and Design</span></button>
+    <button class="nav-link" data-screen="6" type="button"><span class="nav-number">7</span><span>Professionalism</span></button>
+    <button class="nav-link" data-screen="7" type="button"><span class="nav-number">8</span><span>Build the Skeleton</span></button>
+    <button class="nav-link" data-screen="8" type="button"><span class="nav-number">9</span><span>ePortfolio Coach</span></button>
+    <button class="nav-link" data-screen="9" type="button"><span class="nav-number">10</span><span>Sample Project</span></button>
+    <button class="nav-link" data-screen="10" type="button"><span class="nav-number">11</span><span>Reflection</span></button>
+    <button class="nav-link" data-screen="11" type="button"><span class="nav-number">12</span><span>Knowledge Check</span></button>
+  </nav>
+
+  <main class="main" id="lesson-main">
+    <section class="screen active" data-title="Welcome">
+      <span class="badge">Lesson 1</span>
+      <h1>Build Your Professional ePortfolio</h1>
+
+      <div class="hero">
+        <h2>Showcase your learning. Demonstrate your skills. Launch your career.</h2>
+        <p>
+          Every strong project you complete can become evidence of what you know and what you can do.
+          This lesson introduces the purpose of an ePortfolio and helps you prepare to build a professional
+          digital space that grows with you throughout your program.
+        </p>
+      </div>
+
+      <div class="stat-grid">
+        <div class="stat-card">
+          <strong>30–45 minutes</strong>
+          <span>Estimated lesson time</span>
+        </div>
+        <div class="stat-card">
+          <strong>12 sections</strong>
+          <span>Short, guided learning screens</span>
+        </div>
+        <div class="stat-card">
+          <strong>1 first milestone</strong>
+          <span>Create your ePortfolio skeleton</span>
+        </div>
+      </div>
+
+      <div class="callout">
+        <strong>Scenario:</strong>
+        Two applicants have similar degrees and résumés. One applicant also shares a professional website
+        containing project examples, skill evidence, reflections, and credentials. Which applicant gives
+        the employer more useful information?
+      </div>
+
+      <div class="button-row">
+        <button class="primary-button" type="button" data-jump="1">Start Lesson</button>
+        <a class="secondary-button" href="https://jharvellidmecpi.github.io/eportfolio/" target="_blank" rel="noopener">
+          View Sample Portfolio
+        </a>
+      </div>
+    </section>
+
+    <section class="screen" data-title="What Is an ePortfolio?">
+      <span class="badge">Section 2</span>
+      <h1>What Is an ePortfolio?</h1>
+
+      <p>
+        An ePortfolio is a professional digital collection of your academic work, technical projects,
+        achievements, skills, experiences, and reflections. It gives you a place to present evidence of
+        what you know and what you can do.
+      </p>
+
+      <div class="card-grid">
+        <div class="reveal-card">
+          <button type="button" aria-expanded="false">What is it?</button>
+          <div class="reveal-content">
+            <p>A professional website that organizes your strongest evidence, accomplishments, and growth.</p>
+          </div>
+        </div>
+
+        <div class="reveal-card">
+          <button type="button" aria-expanded="false">Who is the audience?</button>
+          <div class="reveal-content">
+            <p>Employers, internship coordinators, professional contacts, graduate programs, and others evaluating your work.</p>
+          </div>
+        </div>
+
+        <div class="reveal-card">
+          <button type="button" aria-expanded="false">What belongs in it?</button>
+          <div class="reveal-content">
+            <p>Selected projects, skill evidence, reflections, credentials, résumé materials, and professional contact links.</p>
+          </div>
+        </div>
+
+        <div class="reveal-card">
+          <button type="button" aria-expanded="false">How does it grow?</button>
+          <div class="reveal-content">
+            <p>You add and improve content throughout your program instead of trying to build everything immediately before graduation.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="warning callout">
+        An ePortfolio is not simply an online résumé, a storage folder full of unrelated assignments,
+        a personal social media page, or a place to publish confidential information.
+      </div>
+    </section>
+
+    <section class="screen" data-title="Why It Matters">
+      <span class="badge">Section 3</span>
+      <h1>Why Is an ePortfolio Important?</h1>
+
+      <p>
+        A résumé summarizes your qualifications. An ePortfolio gives you room to demonstrate them through
+        real examples, explanations, and reflections.
+      </p>
+
+      <table class="compare">
+        <thead>
+          <tr><th>Résumé</th><th>ePortfolio</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Summarizes experience</td><td>Demonstrates experience</td></tr>
+          <tr><td>Lists skills</td><td>Shows evidence of skills</td></tr>
+          <tr><td>Usually one or two pages</td><td>Allows greater depth</td></tr>
+          <tr><td>Tells employers what you did</td><td>Helps employers see what you produced</td></tr>
+          <tr><td>Updated periodically</td><td>Grows throughout your program</td></tr>
+        </tbody>
+      </table>
+
+      <div class="two-col">
+        <div class="card">
+          <h3>What an ePortfolio can help you do</h3>
+          <ul>
+            <li>Preserve strong academic work.</li>
+            <li>Prepare for interviews.</li>
+            <li>Connect coursework to career readiness.</li>
+            <li>Show accomplishments that do not fit on a résumé.</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>What employers can learn</h3>
+          <ul>
+            <li>How you solve problems.</li>
+            <li>How clearly you communicate.</li>
+            <li>What tools and technologies you use.</li>
+            <li>How you reflect and improve.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="quiz-question" data-inline-question="resume">
+        <h3>Quick Check</h3>
+        <p><strong>Which statement best describes the relationship between a résumé and an ePortfolio?</strong></p>
+        <label class="quiz-option"><input type="radio" name="resume" value="a"> They are exactly the same.</label>
+        <label class="quiz-option"><input type="radio" name="resume" value="b"> A résumé summarizes qualifications, while an ePortfolio provides evidence and context.</label>
+        <label class="quiz-option"><input type="radio" name="resume" value="c"> An ePortfolio replaces every need for a résumé.</label>
+        <button class="primary-button check-inline" type="button" data-answer="b">Check Answer</button>
+        <div class="feedback" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section class="screen" data-title="Recommended Sections">
+      <span class="badge">Section 4</span>
+      <h1>Recommended ePortfolio Sections</h1>
+
+      <p>
+        Your first milestone is a skeleton: the basic structure you will gradually develop. Open each
+        section below to see its purpose and recommended content.
+      </p>
+
+      <div class="accordion">
+        <div class="accordion-item">
+          <button class="accordion-trigger" type="button" aria-expanded="false">Home <span>+</span></button>
+          <div class="accordion-panel">
+            <p>Include your name, degree program, professional interests, career direction, and a short value statement.</p>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-trigger" type="button" aria-expanded="false">About Me <span>+</span></button>
+          <div class="accordion-panel">
+            <p>Explain your academic background, career goals, strengths, field interests, and professional motivation.</p>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-trigger" type="button" aria-expanded="false">Skills <span>+</span></button>
+          <div class="accordion-panel">
+            <p>Include both technical skills and professional skills, supported by project evidence whenever possible.</p>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-trigger" type="button" aria-expanded="false">Projects <span>+</span></button>
+          <div class="accordion-panel">
+            <p>Each project should include a title, course, overview, purpose, process, tools, skills, results, reflection, and artifact link.</p>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-trigger" type="button" aria-expanded="false">Résumé <span>+</span></button>
+          <div class="accordion-panel">
+            <p>Provide a current PDF version that visitors can view or download.</p>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-trigger" type="button" aria-expanded="false">Certifications and Credentials <span>+</span></button>
+          <div class="accordion-panel">
+            <p>Include industry certifications, digital badges, licenses, academic honors, and relevant training.</p>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-trigger" type="button" aria-expanded="false">Professional Growth <span>+</span></button>
+          <div class="accordion-panel">
+            <p>Document reflections, milestones, career goals, improvements after feedback, and future development plans.</p>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-trigger" type="button" aria-expanded="false">Contact <span>+</span></button>
+          <div class="accordion-panel">
+            <p>Use a professional email address and appropriate professional profiles such as LinkedIn or GitHub.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="warning callout">
+        Never publish your home address, student identification number, passwords, personal schedule,
+        confidential workplace information, or other sensitive details.
+      </div>
+    </section>
+
+    <section class="screen" data-title="Profile Picture">
+      <span class="badge">Section 5</span>
+      <h1>Selecting a Professional Profile Picture</h1>
+
+      <p>
+        A profile image should support a professional first impression. Students should also have the
+        option to use initials, a monogram, or a simple professional avatar instead of publishing a photograph.
+      </p>
+
+      <div class="option-grid">
+        <div class="choice-card correct">
+          <h3>Professional</h3>
+          <p>Recent head-and-shoulders photo, good lighting, simple background, approachable expression, and appropriate clothing.</p>
+        </div>
+
+        <div class="choice-card needs-work">
+          <h3>Needs Revision</h3>
+          <p>Group photo, heavy filter, distracting background, sunglasses, cropped party picture, or low-resolution screenshot.</p>
+        </div>
+
+        <div class="choice-card">
+          <h3>Professional Alternative</h3>
+          <p>Initials, a clean monogram, a simple program-related icon, or a professionally designed avatar.</p>
+        </div>
+      </div>
+
+      <div class="quiz-question" data-inline-question="photo">
+        <h3>Quick Check</h3>
+        <p><strong>Which option is most appropriate?</strong></p>
+        <label class="quiz-option"><input type="radio" name="photo" value="a"> A heavily filtered group picture.</label>
+        <label class="quiz-option"><input type="radio" name="photo" value="b"> A recent, clear head-and-shoulders image with a simple background.</label>
+        <label class="quiz-option"><input type="radio" name="photo" value="c"> A bathroom mirror selfie.</label>
+        <button class="primary-button check-inline" type="button" data-answer="b">Check Answer</button>
+        <div class="feedback" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section class="screen" data-title="Color and Design">
+      <span class="badge">Section 6</span>
+      <h1>Choosing a Professional Color Palette</h1>
+
+      <p>
+        Use one primary color, one secondary color, one accent color, one light background, and one dark
+        text color. Consistency is more important than using many colors.
+      </p>
+
+      <div class="three-col">
+        <div class="card">
+          <h3>Professional Technology</h3>
+          <div class="palette" aria-label="Navy, blue, teal, light gray, dark slate">
+            <span class="swatch" style="background:#17365d"></span>
+            <span class="swatch" style="background:#2563a6"></span>
+            <span class="swatch" style="background:#168a8a"></span>
+            <span class="swatch" style="background:#f5f7fa"></span>
+            <span class="swatch" style="background:#263442"></span>
+          </div>
+          <p>Balanced, clean, and appropriate for cybersecurity, IT, networking, and business technology.</p>
+        </div>
+
+        <div class="card">
+          <h3>Cybersecurity Dark</h3>
+          <div class="palette" aria-label="Charcoal, deep blue, muted teal, white, gray">
+            <span class="swatch" style="background:#1f2933"></span>
+            <span class="swatch" style="background:#173b6c"></span>
+            <span class="swatch" style="background:#2a8c82"></span>
+            <span class="swatch" style="background:#ffffff"></span>
+            <span class="swatch" style="background:#d9e1e8"></span>
+          </div>
+          <p>Effective when text contrast remains readable and dark backgrounds are used consistently.</p>
+        </div>
+
+        <div class="card">
+          <h3>Clean Business</h3>
+          <div class="palette" aria-label="Navy, medium blue, muted gold, white, dark gray">
+            <span class="swatch" style="background:#203864"></span>
+            <span class="swatch" style="background:#4472c4"></span>
+            <span class="swatch" style="background:#c9a227"></span>
+            <span class="swatch" style="background:#ffffff"></span>
+            <span class="swatch" style="background:#333333"></span>
+          </div>
+          <p>A polished option for business, project management, analytics, and leadership-focused portfolios.</p>
+        </div>
+      </div>
+
+      <div class="callout">
+        Avoid neon colors as the main palette, changing themes on every page, low-contrast text, or decorative
+        colors that do not have a clear purpose.
+      </div>
+    </section>
+
+    <section class="screen" data-title="Professionalism">
+      <span class="badge">Section 7</span>
+      <h1>Maintaining Professionalism</h1>
+
+      <div class="two-col">
+        <div class="card">
+          <h3>Writing and Content</h3>
+          <ul>
+            <li>Use complete sentences and proofread carefully.</li>
+            <li>Use an authentic professional voice.</li>
+            <li>Explain technical concepts clearly.</li>
+            <li>Remove assignment directions before publishing.</li>
+            <li>Never publish confidential information.</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>Design and Maintenance</h3>
+          <ul>
+            <li>Keep navigation and colors consistent.</li>
+            <li>Use readable fonts and enough white space.</li>
+            <li>Test every link and button.</li>
+            <li>Check the site on a phone.</li>
+            <li>Remove outdated or unfinished content before sharing professionally.</li>
+          </ul>
+        </div>
+      </div>
+
+      <h2>Is My Portfolio Professional?</h2>
+
+      <div class="checklist" id="professionalChecklist">
+        <label class="check-row"><input type="checkbox"> <span>My writing has been proofread.</span></label>
+        <label class="check-row"><input type="checkbox"> <span>My links and buttons work.</span></label>
+        <label class="check-row"><input type="checkbox"> <span>My color palette is consistent.</span></label>
+        <label class="check-row"><input type="checkbox"> <span>My project descriptions include context.</span></label>
+        <label class="check-row"><input type="checkbox"> <span>My contact information is appropriate.</span></label>
+        <label class="check-row"><input type="checkbox"> <span>I removed private or confidential information.</span></label>
+        <label class="check-row"><input type="checkbox"> <span>My site is readable on a phone.</span></label>
+        <label class="check-row"><input type="checkbox"> <span>My content sounds like me.</span></label>
+
+        <div class="check-progress">
+          <div class="mini-track" aria-hidden="true"><div class="mini-fill" id="checklistFill"></div></div>
+          <strong id="checklistText">0 of 8</strong>
+        </div>
+      </div>
+    </section>
+
+    <section class="screen" data-title="Build the Skeleton">
+      <span class="badge">Section 8</span>
+      <h1>Build Your Skeleton ePortfolio With Vibe Coding</h1>
+
+      <p>
+        Vibe coding is a conversational approach to website creation. You describe the site you want,
+        the required sections, and the style you prefer. An AI assistant generates starter HTML and CSS
+        that you review, personalize, test, and improve.
+      </p>
+
+      <div class="stepper">
+        <div class="step"><span class="step-number">1</span><div><h3>Plan</h3><p>Choose your displayed name, degree program, career direction, required sections, colors, and profile-image approach.</p></div></div>
+        <div class="step"><span class="step-number">2</span><div><h3>Prompt</h3><p>Describe the skeleton site, accessibility expectations, and placeholders you need.</p></div></div>
+        <div class="step"><span class="step-number">3</span><div><h3>Generate</h3><p>Ask the assistant to create starter HTML and CSS compatible with GitHub Pages.</p></div></div>
+        <div class="step"><span class="step-number">4</span><div><h3>Review</h3><p>Verify that sections, navigation, colors, accessibility, and privacy protections are appropriate.</p></div></div>
+        <div class="step"><span class="step-number">5</span><div><h3>Personalize</h3><p>Replace placeholders with your real information, work, goals, skills, and reflections.</p></div></div>
+        <div class="step"><span class="step-number">6</span><div><h3>Publish</h3><p>Commit the files to GitHub and publish them through GitHub Pages.</p></div></div>
+      </div>
+
+      <h2>Starter Prompt</h2>
+      <pre id="starterPrompt">Create an accessible, mobile-responsive skeleton ePortfolio using HTML and CSS.
+
+Include these sections:
+
+Home
+About Me
+Skills
+Projects
+Resume
+Certifications
+Professional Growth
+Contact
+
+Use a professional technology-inspired design with a consistent color palette.
+
+Include placeholder instructions that clearly tell me what to replace.
+
+Use semantic HTML, keyboard-accessible navigation, visible focus indicators, readable text contrast, and a skip-to-content link.
+
+Do not invent achievements, certifications, work experience, contact information, or skills.
+
+Create one project placeholder that includes fields for the project title, course, overview, skills demonstrated, reflection, and artifact link.
+
+Make the files compatible with GitHub Pages.</pre>
+
+      <div class="button-row">
+        <button class="primary-button" id="copyPromptButton" type="button">Copy Starter Prompt</button>
+      </div>
+
+      <div class="warning callout">
+        The AI creates the scaffold. You supply the identity, evidence, reflection, accuracy, and professional judgment.
+      </div>
+    </section>
+
+    <section class="screen" data-title="ePortfolio Coach">
+      <span class="badge">Section 9</span>
+      <h1>Meet the ECPI ePortfolio Coach</h1>
+
+      <div class="assistant-box">
+        <h2>Plan, build, review, and improve your ePortfolio</h2>
+        <p>
+          The ECPI ePortfolio Coach can help you brainstorm sections, refine project descriptions,
+          identify skills demonstrated by your coursework, develop reflection responses, review
+          professional tone, and generate accessible starter code.
+        </p>
+
+        <div class="button-row">
+          <a
+            class="primary-button"
+            href="ASSISTANT-LINK-GOES-HERE"
+            target="_blank"
+            rel="noopener"
+          >
+            Open the ECPI ePortfolio Coach
+          </a>
+        </div>
+
+        <div class="warning callout">
+          Replace <strong>ASSISTANT-LINK-GOES-HERE</strong> in the HTML with the actual assistant URL before publishing the lesson.
+        </div>
+      </div>
+
+      <h2>Use the assistant responsibly</h2>
+      <p>
+        Review every recommendation, verify accuracy, protect private information, and revise the final
+        content so it reflects your authentic experiences and professional voice.
+      </p>
+    </section>
+
+    <section class="screen" data-title="Sample Project">
+      <span class="badge">Section 10</span>
+      <h1>From Assignment File to Employer-Ready Project</h1>
+
+      <p>
+        A strong portfolio does not merely attach an assignment. It introduces the work, explains the
+        skills it demonstrates, reflects on the learning, and then links to the artifact as evidence.
+      </p>
+
+      <div class="before-after">
+        <div class="card">
+          <h2>Before</h2>
+          <p><strong>CYB320_Final_Paper_Torres_v2.pdf</strong></p>
+          <p>A file name alone does not explain the project, the skills used, or why the work matters.</p>
+        </div>
+
+        <div class="arrow" aria-hidden="true">→</div>
+
+        <div class="card">
+          <h2>After</h2>
+          <p><strong>Network Segmentation Through VLAN Implementation and Inter-VLAN Routing</strong></p>
+          <ul>
+            <li>Project overview</li>
+            <li>Problem and proposed solution</li>
+            <li>Skills and technologies</li>
+            <li>Reflection</li>
+            <li>Link to the full paper</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="button-row">
+        <a class="primary-button" href="https://jharvellidmecpi.github.io/eportfolio/projects/cyb320.html" target="_blank" rel="noopener">
+          View the CYB320 Sample Project
+        </a>
+      </div>
+    </section>
+
+    <section class="screen" data-title="Reflection">
+      <span class="badge">Section 11</span>
+      <h1>Reflection</h1>
+
+      <div class="callout">
+        <strong>Prompt:</strong>
+        What do you want an employer or professional contact to understand about you after viewing your ePortfolio?
+      </div>
+
+      <p>Consider these questions:</p>
+      <ul>
+        <li>What types of work do you hope to showcase?</li>
+        <li>Which skills do you want to demonstrate?</li>
+        <li>What professional impression should your design create?</li>
+        <li>What is one section you can begin developing now?</li>
+      </ul>
+
+      <label for="reflectionText"><strong>Draft your response</strong></label>
+      <textarea id="reflectionText" placeholder="Type your reflection here..."></textarea>
+
+      <div class="button-row">
+        <button class="primary-button" id="copyReflectionButton" type="button">Copy Reflection</button>
+        <button class="ghost-button" id="clearReflectionButton" type="button">Clear</button>
+      </div>
+
+      <div class="warning callout">
+        This text area is for drafting. A standalone HTML lesson does not automatically submit your response to Canvas.
+      </div>
+    </section>
+
+    <section class="screen" data-title="Knowledge Check">
+      <span class="badge">Section 12</span>
+      <h1>Final Knowledge Check</h1>
+
+      <p>Select the best answer for each question, then submit your responses.</p>
+
+      <div class="quiz-question">
+        <h3>1. What is the primary purpose of an ePortfolio?</h3>
+        <label class="quiz-option"><input type="radio" name="q1" value="a"> To store every assignment without explanation.</label>
+        <label class="quiz-option"><input type="radio" name="q1" value="b"> To provide professional evidence of skills, learning, accomplishments, and growth.</label>
+        <label class="quiz-option"><input type="radio" name="q1" value="c"> To replace all professional communication.</label>
+      </div>
+
+      <div class="quiz-question">
+        <h3>2. Which project presentation is strongest?</h3>
+        <label class="quiz-option"><input type="radio" name="q2" value="a"> A file link with no explanation.</label>
+        <label class="quiz-option"><input type="radio" name="q2" value="b"> A project page with context, skills, reflection, and an artifact link.</label>
+        <label class="quiz-option"><input type="radio" name="q2" value="c"> A screenshot with no title.</label>
+      </div>
+
+      <div class="quiz-question">
+        <h3>3. Which information should not be published?</h3>
+        <label class="quiz-option"><input type="radio" name="q3" value="a"> A professional email address.</label>
+        <label class="quiz-option"><input type="radio" name="q3" value="b"> A public LinkedIn profile.</label>
+        <label class="quiz-option"><input type="radio" name="q3" value="c"> A student identification number, password, or home address.</label>
+      </div>
+
+      <div class="quiz-question">
+        <h3>4. What is your responsibility when using AI?</h3>
+        <label class="quiz-option"><input type="radio" name="q4" value="a"> Publish everything without reviewing it.</label>
+        <label class="quiz-option"><input type="radio" name="q4" value="b"> Review, personalize, verify, and take responsibility for the final content.</label>
+        <label class="quiz-option"><input type="radio" name="q4" value="c"> Allow the AI to invent credentials.</label>
+      </div>
+
+      <div class="quiz-question">
+        <h3>5. Which color strategy is most professional?</h3>
+        <label class="quiz-option"><input type="radio" name="q5" value="a"> A small, consistent palette with readable contrast and purposeful accent colors.</label>
+        <label class="quiz-option"><input type="radio" name="q5" value="b"> A different neon theme on every page.</label>
+        <label class="quiz-option"><input type="radio" name="q5" value="c"> Light gray text on a white background.</label>
+      </div>
+
+      <button class="primary-button" id="submitQuizButton" type="button">Submit Knowledge Check</button>
+
+      <div class="feedback" id="quizResult" aria-live="polite"></div>
+    </section>
+  </main>
+
+  <div class="bottom-nav" aria-label="Lesson navigation">
+    <button class="prev" id="prevButton" type="button">Previous</button>
+    <span class="screen-count" id="screenCount">Screen 1 of 12</span>
+    <button class="next" id="nextButton" type="button">Next</button>
+  </div>
+
+  <script>
+    const screens = Array.from(document.querySelectorAll('.screen'));
+    const navLinks = Array.from(document.querySelectorAll('.nav-link'));
+    const progressText = document.getElementById('progressText');
+    const progressFill = document.getElementById('progressFill');
+    const screenCount = document.getElementById('screenCount');
+    const prevButton = document.getElementById('prevButton');
+    const nextButton = document.getElementById('nextButton');
+    const sidebar = document.getElementById('sidebar');
+    const menuButton = document.getElementById('menuButton');
+
+    let currentScreen = 0;
+    const completed = new Set([0]);
+
+    function showScreen(index) {
+      if (index < 0 || index >= screens.length) return;
+
+      currentScreen = index;
+      completed.add(index);
+
+      screens.forEach((screen, i) => {
+        screen.classList.toggle('active', i === index);
+      });
+
+      navLinks.forEach((link, i) => {
+        link.classList.toggle('active', i === index);
+        link.classList.toggle('completed', completed.has(i) && i !== index);
+      });
+
+      const current = index + 1;
+      const percent = (current / screens.length) * 100;
+
+      progressText.textContent = `${current} of ${screens.length}`;
+      progressFill.style.width = `${percent}%`;
+      screenCount.textContent = `Screen ${current} of ${screens.length}`;
+      prevButton.disabled = index === 0;
+      nextButton.disabled = index === screens.length - 1;
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+
+      if (window.innerWidth <= 900) {
+        sidebar.classList.remove('open');
+        menuButton.setAttribute('aria-expanded', 'false');
+      }
+    }
+
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        showScreen(Number(link.dataset.screen));
+      });
+    });
+
+    document.querySelectorAll('[data-jump]').forEach(button => {
+      button.addEventListener('click', () => showScreen(Number(button.dataset.jump)));
+    });
+
+    prevButton.addEventListener('click', () => showScreen(currentScreen - 1));
+    nextButton.addEventListener('click', () => showScreen(currentScreen + 1));
+
+    menuButton.addEventListener('click', () => {
+      const open = sidebar.classList.toggle('open');
+      menuButton.setAttribute('aria-expanded', String(open));
+    });
+
+    document.querySelectorAll('.reveal-card button').forEach(button => {
+      button.addEventListener('click', () => {
+        const card = button.closest('.reveal-card');
+        const open = card.classList.toggle('open');
+        button.setAttribute('aria-expanded', String(open));
+      });
+    });
+
+    document.querySelectorAll('.accordion-trigger').forEach(button => {
+      button.addEventListener('click', () => {
+        const expanded = button.getAttribute('aria-expanded') === 'true';
+        button.setAttribute('aria-expanded', String(!expanded));
+        button.querySelector('span').textContent = expanded ? '+' : '–';
+      });
+    });
+
+    document.querySelectorAll('.check-inline').forEach(button => {
+      button.addEventListener('click', () => {
+        const question = button.closest('.quiz-question');
+        const selected = question.querySelector('input[type="radio"]:checked');
+        const feedback = question.querySelector('.feedback');
+
+        if (!selected) {
+          feedback.className = 'feedback show bad';
+          feedback.textContent = 'Select an answer first.';
+          return;
+        }
+
+        const correct = selected.value === button.dataset.answer;
+        feedback.className = `feedback show ${correct ? 'good' : 'bad'}`;
+        feedback.textContent = correct
+          ? 'Correct. The résumé summarizes qualifications, while the ePortfolio provides supporting evidence and context.'
+          : 'Not quite. Review the comparison above and try again.';
+      });
+    });
+
+    const checklist = document.getElementById('professionalChecklist');
+    const checklistBoxes = Array.from(checklist.querySelectorAll('input[type="checkbox"]'));
+    const checklistFill = document.getElementById('checklistFill');
+    const checklistText = document.getElementById('checklistText');
+
+    function updateChecklist() {
+      const checked = checklistBoxes.filter(box => box.checked).length;
+      checklistFill.style.width = `${(checked / checklistBoxes.length) * 100}%`;
+      checklistText.textContent = `${checked} of ${checklistBoxes.length}`;
+    }
+
+    checklistBoxes.forEach(box => box.addEventListener('change', updateChecklist));
+
+    document.getElementById('copyPromptButton').addEventListener('click', async (event) => {
+      const text = document.getElementById('starterPrompt').innerText;
+      try {
+        await navigator.clipboard.writeText(text);
+        event.currentTarget.textContent = 'Prompt Copied';
+      } catch {
+        event.currentTarget.textContent = 'Select and copy manually';
+      }
+    });
+
+    document.getElementById('copyReflectionButton').addEventListener('click', async (event) => {
+      const text = document.getElementById('reflectionText').value;
+      if (!text.trim()) {
+        event.currentTarget.textContent = 'Write a reflection first';
+        return;
+      }
+      try {
+        await navigator.clipboard.writeText(text);
+        event.currentTarget.textContent = 'Reflection Copied';
+      } catch {
+        event.currentTarget.textContent = 'Select and copy manually';
+      }
+    });
+
+    document.getElementById('clearReflectionButton').addEventListener('click', () => {
+      document.getElementById('reflectionText').value = '';
+    });
+
+    document.getElementById('submitQuizButton').addEventListener('click', () => {
+      const answers = { q1: 'b', q2: 'b', q3: 'c', q4: 'b', q5: 'a' };
+      let score = 0;
+      let answered = 0;
+
+      Object.entries(answers).forEach(([name, correct]) => {
+        const selected = document.querySelector(`input[name="${name}"]:checked`);
+        if (selected) {
+          answered += 1;
+          if (selected.value === correct) score += 1;
+        }
+      });
+
+      const result = document.getElementById('quizResult');
+
+      if (answered < 5) {
+        result.className = 'feedback show bad';
+        result.textContent = `You answered ${answered} of 5 questions. Complete every question before submitting.`;
+        return;
+      }
+
+      const passed = score >= 4;
+      result.className = `feedback show ${passed ? 'good' : 'bad'}`;
+      result.innerHTML = passed
+        ? `<strong>${score} of 5 correct.</strong> You are ready to begin building your ePortfolio skeleton.`
+        : `<strong>${score} of 5 correct.</strong> Review the lesson sections, then try again.`;
+    });
+
+    showScreen(0);
+  </script>
+</body>
+</html>
