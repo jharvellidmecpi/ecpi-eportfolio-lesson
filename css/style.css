@@ -384,8 +384,28 @@
       color: var(--navy);
       text-align: left;
       padding: 16px 18px;
+      font-size: 1.02rem;
       font-weight: 800;
       cursor: pointer;
+    }
+
+    .accordion-trigger span {
+      flex: 0 0 auto;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: var(--soft-blue);
+      color: var(--blue);
+      font-size: 1.1rem;
+      font-weight: 900;
+    }
+
+    .accordion-trigger[aria-expanded="true"] span {
+      background: var(--blue);
+      color: white;
     }
 
     .accordion-trigger[aria-expanded="true"] {
@@ -394,7 +414,15 @@
 
     .accordion-panel {
       display: none;
-      padding: 0 18px 18px;
+      padding: 16px 18px 20px;
+      border-top: 1px solid var(--border);
+      background: var(--panel);
+      line-height: 1.7;
+    }
+
+    .accordion-panel p {
+      margin: 0;
+      font-size: 1rem;
     }
 
     .accordion-trigger[aria-expanded="true"] + .accordion-panel {
