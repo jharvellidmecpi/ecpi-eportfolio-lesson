@@ -268,7 +268,7 @@
     }
 
     .stat-grid { grid-template-columns: repeat(3, 1fr); }
-    .card-grid { grid-template-columns: repeat(2, 1fr); }
+    .card-grid { grid-template-columns: repeat(2, 1fr); align-items: start; }
     .two-col { grid-template-columns: repeat(2, 1fr); }
     .three-col { grid-template-columns: repeat(3, 1fr); }
 
