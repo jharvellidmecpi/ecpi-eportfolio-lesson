@@ -4,6 +4,8 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; frame-src https://genai.ecpi.edu; base-uri 'self'; object-src 'none'"/>
+<!-- Hosting/LMS platform should also set the equivalent security headers (CSP, X-Frame-Options, etc.) server-side where possible. -->
 <title>Build Your Professional ePortfolio | Lesson 1</title>
 <link href="css/style.css" rel="stylesheet"/>
 </head>
@@ -27,22 +29,20 @@
 <button class="nav-link active" data-screen="0" type="button"><span class="nav-number">1</span><span>Welcome</span></button>
 <button class="nav-link" data-screen="1" type="button"><span class="nav-number">2</span><span>What Is an ePortfolio?</span></button>
 <button class="nav-link" data-screen="2" type="button"><span class="nav-number">3</span><span>Why It Matters</span></button>
-<button class="nav-link" data-screen="3" type="button"><span class="nav-number">4</span><span>Recommended Sections</span></button>
-<button class="nav-link" data-screen="4" type="button"><span class="nav-number">5</span><span>Profile Picture</span></button>
-<button class="nav-link" data-screen="5" type="button"><span class="nav-number">6</span><span>Color and Design</span></button>
-<button class="nav-link" data-screen="6" type="button"><span class="nav-number">7</span><span>Professionalism</span></button>
-<button class="nav-link" data-screen="7" type="button"><span class="nav-number">8</span><span>Build the Skeleton</span></button>
-<button class="nav-link" data-screen="8" type="button"><span class="nav-number">9</span><span>ePortfolio Coach</span></button>
+<button class="nav-link" data-screen="3" type="button"><span class="nav-number">4</span><span>Reflective Practice</span></button>
+<button class="nav-link" data-screen="4" type="button"><span class="nav-number">5</span><span>Speak to Your Work</span></button>
+<button class="nav-link" data-screen="5" type="button"><span class="nav-number">6</span><span>Recommended Sections</span></button>
+<button class="nav-link" data-screen="6" type="button"><span class="nav-number">7</span><span>Profile Picture</span></button>
+<button class="nav-link" data-screen="7" type="button"><span class="nav-number">8</span><span>Color and Design</span></button>
+<button class="nav-link" data-screen="8" type="button"><span class="nav-number">9</span><span>Professionalism</span></button>
 <button class="nav-link" data-screen="9" type="button"><span class="nav-number">10</span><span>Showcase Projects</span></button>
-<button class="nav-link" data-screen="10" type="button"><span class="nav-number">11</span><span>Reflective Practice</span></button>
-<button class="nav-link" data-screen="11" type="button"><span class="nav-number">12</span><span>Speak to Your Work</span></button>
-<button class="nav-link" data-screen="12" type="button"><span class="nav-number">13</span><span>Reflection Builder</span></button>
-<button class="nav-link" data-screen="13" type="button"><span class="nav-number">14</span><span>Portfolio Reflection</span></button>
-<button class="nav-link" data-screen="14" type="button"><span class="nav-number">15</span><span>Knowledge Check</span></button>
+<button class="nav-link" data-screen="10" type="button"><span class="nav-number">11</span><span>ePortfolio Coach</span></button>
+<button class="nav-link" data-screen="11" type="button"><span class="nav-number">12</span><span>Knowledge Check</span></button>
 <a aria-label="Open the ECPI ePortfolio Coach in a new tab" class="sidebar-coach" href="https://genai.ecpi.edu/assistants/PDT-wP51aMOMV1Lw" rel="noopener" target="_blank">✦ <strong>ePortfolio Coach</strong><span>Get help while you build</span></a></nav>
 <main class="main" id="lesson-main">
+
 <section class="screen active" data-title="Welcome">
-<span class="badge">Lesson 1</span><section aria-labelledby="welcome-heading" class="welcome-banner"><div class="welcome-card"><h1 id="welcome-heading">Build Your Professional Story</h1><p>Create an ePortfolio that showcases your skills, projects, reflection, and professional growth.</p><button class="primary-button" data-jump="1" type="button">Start Building</button></div></section>
+<span class="badge">Lesson 1</span><section aria-labelledby="welcome-heading" class="welcome-banner"><div class="welcome-card"><h1 id="welcome-heading">Build Your Professional Story</h1><p>Create an ePortfolio that showcases your skills, projects, reflection, and professional growth.</p></div></section>
 <div class="hero">
 <h2>Showcase your learning. Demonstrate your skills. Launch your career.</h2>
 <p>
@@ -51,30 +51,18 @@
           digital space that grows with you throughout your program.
         </p>
 </div>
-<div class="stat-grid">
-<div class="stat-card">
-<strong>30–45 minutes</strong>
-<span>Estimated lesson time</span>
-</div>
-<div class="stat-card">
-<strong>15 sections</strong>
-<span>Short, guided learning screens</span>
-</div>
-<div class="stat-card">
-<strong>1 first milestone</strong>
-<span>Create your ePortfolio skeleton</span>
-</div>
-</div>
 <div class="callout">
 <strong>Scenario:</strong>
-        Two applicants have similar degrees and résumés. One applicant also shares a professional website
+        Two applicants have similar degrees and resumes. One applicant also shares a professional website
         containing project examples, skill evidence, reflections, and credentials. Which applicant gives
-        the employer more useful information?
+        the employer more useful information? Keep this scenario in mind as you build&mdash;take a look at a
+        sample portfolio below to see what that difference can look like.
       </div>
 <div class="button-row">
 <a class="secondary-button" href="https://jharvellidmecpi.github.io/eportfolio/" rel="noopener" target="_blank">
           View Sample Portfolio
         </a>
+<button class="primary-button" data-jump="1" type="button">Start Building</button>
 </div>
 </section>
 <section class="screen" data-title="What Is an ePortfolio?">
@@ -85,6 +73,7 @@
         achievements, skills, experiences, and reflections. It gives you a place to present evidence of
         what you know and what you can do.
       </p>
+<p class="section-intro">Select each card below to reveal the answer.</p>
 <div class="card-grid">
 <div class="reveal-card">
 <button aria-expanded="false" type="button">What is it?</button>
@@ -101,7 +90,7 @@
 <div class="reveal-card">
 <button aria-expanded="false" type="button">What belongs in it?</button>
 <div class="reveal-content">
-<p>Selected projects, skill evidence, reflections, credentials, résumé materials, and professional contact links.</p>
+<p>Selected projects, skill evidence, reflections, credentials, resume materials, and professional contact links.</p>
 </div>
 </div>
 <div class="reveal-card">
@@ -111,21 +100,17 @@
 </div>
 </div>
 </div>
-<div class="warning callout">
-        An ePortfolio is not simply an online résumé, a storage folder full of unrelated assignments,
-        a personal social media page, or a place to publish confidential information.
-      </div>
 </section>
 <section class="screen" data-title="Why It Matters">
 <span class="badge">Section 3</span>
 <h1>Why Is an ePortfolio Important?</h1>
 <p>
-        A résumé summarizes your qualifications. An ePortfolio gives you room to demonstrate them through
+        A resume summarizes your qualifications. An ePortfolio gives you room to demonstrate them through
         real examples, explanations, and reflections.
       </p>
 <table class="compare">
 <thead>
-<tr><th>Résumé</th><th>ePortfolio</th></tr>
+<tr><th>Resume</th><th>ePortfolio</th></tr>
 </thead>
 <tbody>
 <tr><td>Summarizes experience</td><td>Demonstrates experience</td></tr>
@@ -142,7 +127,7 @@
 <li>Preserve strong academic work.</li>
 <li>Prepare for interviews.</li>
 <li>Connect coursework to career readiness.</li>
-<li>Show accomplishments that do not fit on a résumé.</li>
+<li>Show accomplishments that do not fit on a resume.</li>
 </ul>
 </div>
 <div class="card">
@@ -157,120 +142,201 @@
 </div>
 <div class="quiz-question" data-inline-question="resume">
 <h3>Quick Check</h3>
-<p><strong>Which statement best describes the relationship between a résumé and an ePortfolio?</strong></p>
+<p><strong>Which statement best describes the relationship between a resume and an ePortfolio?</strong></p>
 <label class="quiz-option"><input name="resume" type="radio" value="a"/> They are exactly the same.</label>
-<label class="quiz-option"><input name="resume" type="radio" value="b"/> A résumé summarizes qualifications, while an ePortfolio provides evidence and context.</label>
-<label class="quiz-option"><input name="resume" type="radio" value="c"/> An ePortfolio replaces every need for a résumé.</label>
-<button class="primary-button check-inline" data-answer="b" type="button">Check Answer</button>
+<label class="quiz-option"><input name="resume" type="radio" value="b"/> A resume summarizes qualifications, while an ePortfolio provides evidence and context.</label>
+<label class="quiz-option"><input name="resume" type="radio" value="c"/> An ePortfolio replaces every need for a resume.</label>
+<button class="primary-button check-inline" data-answer="b" data-correct-feedback="Correct. The resume summarizes qualifications, while the ePortfolio provides supporting evidence and context." data-incorrect-feedback="Not quite. Review the comparison above and try again." type="button">Check Answer</button>
 <div aria-live="polite" class="feedback"></div>
 </div>
 <aside aria-label="Employer tip" class="employer-tip"><span aria-hidden="true" class="tip-icon">★</span><div><strong>Employer Tip</strong><p>Use your homepage and project summaries to help a visitor understand your strengths quickly. Keep the most relevant evidence easy to find.</p></div></aside></section>
-<section class="screen" data-title="Recommended Sections">
+<section class="screen" data-title="Reflective Practice">
 <span class="badge">Section 4</span>
+<h1>Reflective Practice: Understand Your Own Work</h1>
+<p class="section-intro">
+        A professional ePortfolio is valuable only when you can explain what you created, why you made
+        particular decisions, what you learned, and how the experience changed your approach.
+      </p><figure class="reflection-quote"><blockquote>“We do not learn from experience. We learn from reflecting on experience.”</blockquote><figcaption>— commonly attributed to John Dewey</figcaption></figure>
+<div class="reflection-hero">
+<div>
+<span class="studio-label">From completion to confidence</span>
+<h2>Reflection turns an assignment into a professional story.</h2>
+<p>
+            It helps you identify evidence of growth, connect coursework to career skills, and prepare
+            to discuss your work naturally instead of memorizing an AI-generated script.
+          </p>
+</div>
+<svg aria-label="Reflection cycle from experience to career connection" class="reflection-illustration" role="img" viewbox="0 0 360 240">
+<defs><marker id="arrowhead" markerheight="7" markerwidth="10" orient="auto" refx="9" refy="3.5"><polygon fill="#168a8a" points="0 0, 10 3.5, 0 7"></polygon></marker></defs>
+<circle cx="180" cy="120" fill="#17365d" r="45"></circle><text fill="white" font-size="18" font-weight="700" text-anchor="middle" x="180" y="115">YOUR</text><text fill="white" font-size="18" font-weight="700" text-anchor="middle" x="180" y="138">GROWTH</text>
+<circle cx="180" cy="30" fill="#eaf1f8" r="28" stroke="#2563a6" stroke-width="3"></circle><text fill="#17365d" font-size="12" font-weight="700" text-anchor="middle" x="180" y="35">DO</text>
+<circle cx="300" cy="120" fill="#e4f3f3" r="32" stroke="#168a8a" stroke-width="3"></circle><text fill="#17365d" font-size="12" font-weight="700" text-anchor="middle" x="300" y="125">THINK</text>
+<circle cx="180" cy="210" fill="#fff7db" r="30" stroke="#d9a72e" stroke-width="3"></circle><text fill="#17365d" font-size="12" font-weight="700" text-anchor="middle" x="180" y="215">LEARN</text>
+<circle cx="60" cy="120" fill="#fbeaea" r="32" stroke="#c74c47" stroke-width="3"></circle><text fill="#17365d" font-size="12" font-weight="700" text-anchor="middle" x="60" y="125">APPLY</text>
+<path d="M205 43 C260 55 282 76 288 91" fill="none" marker-end="url(#arrowhead)" stroke="#168a8a" stroke-width="4"></path>
+<path d="M286 148 C270 181 230 198 212 202" fill="none" marker-end="url(#arrowhead)" stroke="#168a8a" stroke-width="4"></path>
+<path d="M148 201 C105 192 78 165 69 151" fill="none" marker-end="url(#arrowhead)" stroke="#168a8a" stroke-width="4"></path>
+<path d="M72 91 C90 61 132 42 151 38" fill="none" marker-end="url(#arrowhead)" stroke="#168a8a" stroke-width="4"></path>
+</svg>
+</div>
+<div class="concept-grid">
+<article class="concept-card">
+<div aria-hidden="true" class="concept-symbol">R</div>
+<h2>Reflection</h2>
+<p>Looking back on an experience to identify learning, challenges, strengths, and future improvements.</p>
+<p class="concept-example"><strong>Ask:</strong> What happened, and what did I learn from it?</p>
+</article>
+<article class="concept-card">
+<div aria-hidden="true" class="concept-symbol">M</div>
+<h2>Metacognition</h2>
+<p>Thinking about how you think and learn, including the strategies that helped or limited you.</p>
+<p class="concept-example"><strong>Ask:</strong> How did I approach this, and why?</p>
+</article>
+<article class="concept-card">
+<div aria-hidden="true" class="concept-symbol">C</div>
+<h2>Critical Thinking</h2>
+<p>Analyzing information, evaluating options, explaining decisions, and drawing supported conclusions.</p>
+<p class="concept-example"><strong>Ask:</strong> What evidence guided my decision?</p>
+</article>
+<article class="concept-card">
+<div aria-hidden="true" class="concept-symbol">G</div>
+<h2>Professional Growth</h2>
+<p>Recognizing how your knowledge, skills, confidence, and professional judgment develop over time.</p>
+<p class="concept-example"><strong>Ask:</strong> What can I do now that I could not do before?</p>
+</article>
+</div>
+<h2>The D-A-E-I-C Reflection Framework</h2>
+<div aria-label="Five-part reflection framework" class="reflection-framework">
+<article><span>D</span><h3>Describe</h3><p>What did you create or complete?</p></article>
+<article><span>A</span><h3>Analyze</h3><p>What problem, goal, evidence, and decisions shaped your work?</p></article>
+<article><span>E</span><h3>Evaluate</h3><p>What worked well, and what was challenging?</p></article>
+<article><span>I</span><h3>Improve</h3><p>What would you revise or do differently next time?</p></article>
+<article><span>C</span><h3>Connect</h3><p>How does this learning relate to your career and future work?</p></article>
+</div>
+<aside class="employer-tip" aria-label="Employer perspective">
+  <span class="tip-icon" aria-hidden="true">★</span>
+  <div>
+    <strong>Employer Perspective</strong>
+    <p>
+      The artifact shows what you produced. Your reflection shows how you think,
+      respond to challenges, learn from feedback, and improve.
+    </p>
+  </div>
+</aside>
+</section>
+<section class="screen" data-title="Speak to Your Work">
+<span class="badge">Section 5</span>
+<h1>Speak to Your Work in Your Own Words</h1>
+<p class="section-intro">
+        Employers may ask you to explain a project, defend a decision, discuss feedback, or identify what
+        you would improve. Your ePortfolio should help you prepare—not give you a script to memorize.
+      </p><section aria-labelledby="interview-video-heading" class="video-card"><div class="video-frame"><img alt="Career expo scene used as a placeholder for the interview preparation video" src="assets/images/hero/career-expo.svg"/><div aria-hidden="true" class="video-overlay">Video placeholder</div></div><div class="video-copy"><span class="studio-label">Career Coach Minute · 60–90 seconds</span><h2 id="interview-video-heading">Talking About Your Portfolio During an Interview</h2><p>Replace the placeholder with an approved Panopto, YouTube, or MP4 video when the recording is ready. The transcript below makes the content available now.</p><details><summary>Read the interview video transcript</summary><p>Imagine an interviewer asks, “Tell me about one of the projects in your ePortfolio.” Instead of saying only that you completed it for class, briefly explain the problem or goal, the approach you took, the tools you used, and the skills you developed.</p><p>Discussing a challenge is also valuable. Explain how you responded, what you learned, and what you would improve today. Your ePortfolio is not simply a collection of assignments; it is evidence of your thinking, growth, and readiness to contribute professionally.</p></details></div></section>
+<div class="story-structure">
+<div class="story-step"><span>1</span><strong>Context</strong><p>What was the project and why did it matter?</p></div>
+<div class="story-step"><span>2</span><strong>Approach</strong><p>What process, tools, or strategies did you use?</p></div>
+<div class="story-step"><span>3</span><strong>Challenge</strong><p>What problem, limitation, or setback did you encounter?</p></div>
+<div class="story-step"><span>4</span><strong>Result</strong><p>What did you produce, discover, or improve?</p></div>
+<div class="story-step"><span>5</span><strong>Growth</strong><p>What did you learn, and how will you apply it?</p></div>
+</div>
+<h2>Practice Employer Questions</h2>
+<p>Select each question to reveal coaching prompts. Develop your own response using your actual experience.</p>
+<div class="accordion interview-accordion">
+<div class="accordion-item">
+<button aria-expanded="false" class="accordion-trigger" type="button">Tell me about a project in your portfolio. <span>+</span></button>
+<div class="accordion-panel"><p>Briefly name the project and goal. Explain your role, approach, key decisions, result, and one lesson you can apply professionally.</p></div>
+</div>
+<div class="accordion-item">
+<button aria-expanded="false" class="accordion-trigger" type="button">What was the most challenging part? <span>+</span></button>
+<div class="accordion-panel"><p>Describe a real obstacle, how you diagnosed it, what options you considered, what action you took, and what you learned.</p></div>
+</div>
+<div class="accordion-item">
+<button aria-expanded="false" class="accordion-trigger" type="button">Walk me through your decision-making process. <span>+</span></button>
+<div class="accordion-panel"><p>Identify the information or evidence you reviewed, alternatives you considered, constraints you faced, and why your final choice was reasonable.</p></div>
+</div>
+<div class="accordion-item">
+<button aria-expanded="false" class="accordion-trigger" type="button">What would you do differently now? <span>+</span></button>
+<div class="accordion-panel"><p>Show growth rather than regret. Explain what new knowledge, feedback, or experience would change your approach.</p></div>
+</div>
+<div class="accordion-item">
+<button aria-expanded="false" class="accordion-trigger" type="button">How did feedback affect your work? <span>+</span></button>
+<div class="accordion-panel"><p>Explain the feedback, how you evaluated it, what you revised, and how the revision improved the outcome or your process.</p></div>
+</div>
+<div class="accordion-item">
+<button aria-expanded="false" class="accordion-trigger" type="button">How does this project prepare you for this role? <span>+</span></button>
+<div class="accordion-panel"><p>Connect the project’s tasks and skills directly to the role’s responsibilities without overstating your experience.</p></div>
+</div>
+</div>
+<div class="authenticity-comparison">
+<article class="avoid-language">
+<span class="example-status">Avoid</span>
+<h2>Generic or memorized language</h2>
+<blockquote>“This project taught me many valuable skills and helped me grow professionally.”</blockquote>
+<p>This statement is vague and could describe almost any assignment.</p>
+</article>
+<article class="strong-language">
+<span class="example-status">Stronger approach</span>
+<h2>Specific, evidence-based language</h2>
+<blockquote>“Comparing router-on-a-stick with multilayer switching helped me understand how network size and traffic requirements affect design decisions.”</blockquote>
+<p>This response identifies the work, the learning, and the reasoning behind it.</p>
+</article>
+</div>
+</section>
+<section class="screen" data-title="Recommended Sections">
+<span class="badge">Section 6</span>
 <h1>Recommended ePortfolio Sections</h1>
 <p>
-        Your first milestone is a skeleton: the basic structure you will gradually develop. Open each
-        section below to see its purpose and recommended content.
+        Before you add real content, it helps to plan the basic structure your ePortfolio will use&mdash;
+        sometimes called a skeleton. You will build out each of these sections gradually over time, adding
+        stronger evidence as you complete more coursework and projects.
       </p>
-<div class="accordion">
-<div class="accordion-item">
-<button aria-expanded="false" class="accordion-trigger" type="button">Home <span>+</span></button>
-<div class="accordion-panel">
+<div class="accessibility-grid">
+<article class="accessibility-card">
+<h3>Home</h3>
 <p>Include your name, degree program, professional interests, career direction, and a short value statement.</p>
-</div>
-</div>
-<div class="accordion-item">
-<button aria-expanded="false" class="accordion-trigger" type="button">About Me <span>+</span></button>
-<div class="accordion-panel">
+</article>
+<article class="accessibility-card">
+<h3>About Me</h3>
 <p>Explain your academic background, career goals, strengths, field interests, and professional motivation.</p>
-</div>
-</div>
-<div class="accordion-item">
-<button aria-expanded="false" class="accordion-trigger" type="button">Skills <span>+</span></button>
-<div class="accordion-panel">
+</article>
+<article class="accessibility-card">
+<h3>Skills</h3>
 <p>Include both technical skills and professional skills, supported by project evidence whenever possible.</p>
-</div>
-</div>
-<div class="accordion-item">
-<button aria-expanded="false" class="accordion-trigger" type="button">Projects <span>+</span></button>
-<div class="accordion-panel">
+</article>
+<article class="accessibility-card">
+<h3>Projects</h3>
 <p>Each project should include a title, course, overview, purpose, process, tools, skills, results, reflection, and artifact link.</p>
-</div>
-</div>
-<div class="accordion-item">
-<button aria-expanded="false" class="accordion-trigger" type="button">Résumé <span>+</span></button>
-<div class="accordion-panel">
+</article>
+<article class="accessibility-card">
+<h3>Resume</h3>
 <p>Provide a current PDF version that visitors can view or download.</p>
-</div>
-</div>
-<div class="accordion-item">
-<button aria-expanded="false" class="accordion-trigger" type="button">Certifications and Credentials <span>+</span></button>
-<div class="accordion-panel">
+</article>
+<article class="accessibility-card">
+<h3>Certifications and Credentials</h3>
 <p>Include industry certifications, digital badges, licenses, academic honors, and relevant training.</p>
-</div>
-</div>
-<div class="accordion-item">
-<button aria-expanded="false" class="accordion-trigger" type="button">Professional Growth <span>+</span></button>
-<div class="accordion-panel">
+</article>
+<article class="accessibility-card">
+<h3>Professional Growth</h3>
 <p>Document reflections, milestones, career goals, improvements after feedback, and future development plans.</p>
-</div>
-</div>
-<div class="accordion-item">
-<button aria-expanded="false" class="accordion-trigger" type="button">Contact <span>+</span></button>
-<div class="accordion-panel">
+</article>
+<article class="accessibility-card">
+<h3>Contact</h3>
 <p>Use a professional email address and appropriate professional profiles such as LinkedIn or GitHub.</p>
-</div>
-</div>
+</article>
 </div>
 <div class="warning callout">
         Never publish your home address, student identification number, passwords, personal schedule,
         confidential workplace information, or other sensitive details.
       </div>
 </section>
+
 <section class="screen" data-title="Profile Picture">
-<span class="badge">Section 5</span>
+<span class="badge">Section 7</span>
 <h1>Create a Professional First Impression</h1>
 <p class="section-intro">
     Your profile image is often one of the first elements visitors notice.
     Choose an image that supports the professional identity you want your
     ePortfolio to communicate.
   </p>
-<div class="profile-guidance-grid">
-<article class="profile-example recommended">
-<div aria-hidden="true" class="profile-placeholder">
-<span>Professional<br/>Photo</span>
-</div>
-<div>
-<span class="example-status">Recommended</span>
-<h2>Professional Profile Photo</h2>
-<ul>
-<li>Recent head-and-shoulders image</li>
-<li>Good lighting</li>
-<li>Simple, uncluttered background</li>
-<li>Professional or business-casual clothing</li>
-<li>Natural and approachable expression</li>
-<li>Clear, high-quality image</li>
-</ul>
-</div>
-</article>
-<article class="profile-example revise">
-<div aria-hidden="true" class="profile-placeholder alternate">
-<span>Photo<br/>to Revise</span>
-</div>
-<div>
-<span class="example-status">Needs Revision</span>
-<h2>Avoid These Choices</h2>
-<ul>
-<li>Group photographs</li>
-<li>Party or vacation pictures</li>
-<li>Heavy filters</li>
-<li>Sunglasses or distracting accessories</li>
-<li>Bathroom or car selfies</li>
-<li>Images with someone cropped out</li>
-</ul>
-</div>
-</article>
-</div>
 <div class="alternative-profile">
 <div aria-hidden="true" class="initials-example">ST</div>
 <div>
@@ -289,33 +355,71 @@
 </ul>
 </div>
 </div>
+<p class="section-intro">If you do choose to include a personal photo, here is what to know:</p>
+<div class="profile-guidance-grid">
+<article class="profile-example recommended">
+<div aria-hidden="true" class="profile-placeholder">
+<span>Professional<br/>Photo</span>
+</div>
+<span class="example-status">Recommended</span>
+<h2>Professional Profile Photo</h2>
+<ul>
+<li>Recent head-and-shoulders image</li>
+<li>Good lighting</li>
+<li>Simple, uncluttered background</li>
+<li>Professional or business-casual clothing</li>
+<li>Natural and approachable expression</li>
+<li>Clear, high-quality image</li>
+</ul>
+</article>
+<article class="profile-example revise">
+<div aria-hidden="true" class="profile-placeholder alternate">
+<span>Photo<br/>to Revise</span>
+</div>
+<span class="example-status">Needs Revision</span>
+<h2>Avoid These Choices</h2>
+<ul>
+<li>T-shirts, sweatshirts, or other unprofessional attire</li>
+<li>Wrinkled clothing</li>
+<li>Group photographs</li>
+<li>Party or vacation pictures</li>
+<li>Heavy filters</li>
+<li>Sunglasses or distracting accessories</li>
+<li>Bathroom or car selfies</li>
+<li>Images with someone cropped out</li>
+</ul>
+</article>
+</div>
 <section aria-labelledby="profile-gallery-heading" class="visual-inset"><div class="visual-inset-heading"><div><span class="studio-label">Examples</span><h2 id="profile-gallery-heading">Sample Professional Profile Photos</h2></div><p>These sample headshots reinforce the existing guidance: clear lighting, simple backgrounds, appropriate attire, and an approachable expression.</p></div><div class="profile-photo-gallery"><figure><img alt="Sample professional headshot demonstrating profile photo characteristic 1" src="assets/images/profile/profile-1.jpg"/><figcaption>Clear background</figcaption></figure><figure><img alt="Sample professional headshot demonstrating profile photo characteristic 2" src="assets/images/profile/profile-2.jpg"/><figcaption>Good lighting</figcaption></figure><figure><img alt="Sample professional headshot demonstrating profile photo characteristic 3" src="assets/images/profile/profile-3.jpg"/><figcaption>Approachable expression</figcaption></figure><figure><img alt="Sample professional headshot demonstrating profile photo characteristic 4" src="assets/images/profile/profile-4.jpg"/><figcaption>Professional presentation</figcaption></figure></div></section><div class="quiz-question" data-inline-question="photo">
 <h2>Professional or Needs Revision?</h2>
 <p>
 <strong>
-        Which option would create the strongest professional first impression?
+        A classmate's profile photo is a tightly cropped face from a group photo taken at a party, with
+        drinks visible in the background. They say it's fine because their face is clearly visible. What
+        is the most professional feedback to give them?
       </strong>
 </p>
 <label class="quiz-option">
 <input name="photo" type="radio" value="a"/>
-      A heavily filtered group picture from a social event
+      It's fine as long as their face is visible; the background does not matter.
     </label>
 <label class="quiz-option">
 <input name="photo" type="radio" value="b"/>
-      A recent, clear head-and-shoulders image with a simple background
+      Crop it even tighter so less of the background shows.
     </label>
 <label class="quiz-option">
 <input name="photo" type="radio" value="c"/>
-      A low-resolution bathroom mirror selfie
+      Replace it with a simple, well-lit headshot or a professional alternative like initials&mdash;the setting itself sends an unprofessional signal, regardless of cropping.
     </label>
-<button class="primary-button check-inline" data-answer="b" type="button">
+<button class="primary-button check-inline" data-answer="c" data-correct-feedback="Correct. The setting itself, not just cropping, sends the professional signal." data-incorrect-feedback="Not quite. Think about what the setting communicates, not just whether a face is visible." type="button">
       Check Answer
     </button>
 <div aria-live="polite" class="feedback"></div>
 </div>
 </section>
+
 <section class="screen" data-title="Color and Design">
-<span class="badge">Section 6</span>
+<span class="badge">Section 8</span>
 <h1>Design Studio</h1>
 <p class="section-intro">
     Your ePortfolio should reflect your professional goals without becoming
@@ -354,15 +458,16 @@
 </div>
 </article>
 </div>
+<div class="design-substeps" id="designSubsteps">
+<div class="design-substep active" data-substep="0">
 <section aria-labelledby="palette-heading" class="studio-panel">
 <div class="studio-heading">
 <div>
-<span class="studio-label">Color</span>
+<span class="studio-label">Color · Step 1 of 3</span>
 <h2 id="palette-heading">Choose a Professional Palette</h2>
 </div>
 <p>
-        Select a palette to preview how the colors could look in an
-        ePortfolio.
+        Select a palette below&mdash;the preview updates automatically.
       </p>
 </div>
 <div class="palette-selector">
@@ -441,10 +546,15 @@
       Previewing the Professional Technology palette.
     </p>
 </section>
+<div class="button-row">
+<button class="primary-button substep-next" type="button">Continue to Typography</button>
+</div>
+</div>
+<div class="design-substep" data-substep="1">
 <section aria-labelledby="font-heading" class="studio-panel">
 <div class="studio-heading">
 <div>
-<span class="studio-label">Typography</span>
+<span class="studio-label">Typography · Step 2 of 3</span>
 <h2 id="font-heading">Choose Readable Fonts</h2>
 </div>
 <p>
@@ -476,15 +586,22 @@
           </p>
 </div>
 <p>
-          Avoid novelty, script, or highly decorative fonts for body text.
+          Avoid novelty, script, or highly decorative fonts, and dated
+          defaults like Times New Roman, for body text.
         </p>
 </article>
 </div>
 </section>
+<div class="button-row">
+<button class="ghost-button substep-prev" type="button">Back</button>
+<button class="primary-button substep-next" type="button">Continue to Accessibility</button>
+</div>
+</div>
+<div class="design-substep" data-substep="2">
 <section aria-labelledby="accessibility-heading" class="studio-panel">
 <div class="studio-heading">
 <div>
-<span class="studio-label">Accessibility</span>
+<span class="studio-label">Accessibility · Step 3 of 3</span>
 <h2 id="accessibility-heading">
           Design for Every Visitor
         </h2>
@@ -518,8 +635,8 @@
 <article class="accessibility-card">
 <h3>Descriptive Links</h3>
 <p>
-          Use labels such as “View Network Security Project” instead of
-          vague wording such as “Click here.”
+          Use labels such as "View Network Security Project" instead of
+          vague wording such as "Click here."
         </p>
 </article>
 <article class="accessibility-card">
@@ -552,21 +669,27 @@
     </label>
 <label class="quiz-option">
 <input name="design" type="radio" value="b"/>
-      Use a small, consistent palette with readable contrast and clear
-      typography.
+      Use a limited, consistent color palette with readable contrast and
+      clear typography.
     </label>
 <label class="quiz-option">
 <input name="design" type="radio" value="c"/>
       Use decorative fonts for all headings and body paragraphs.
     </label>
-<button class="primary-button check-inline" data-answer="b" type="button">
+<button class="primary-button check-inline" data-answer="b" data-correct-feedback="Correct. A limited, consistent palette with readable contrast keeps a portfolio professional and easy to scan." data-incorrect-feedback="Not quite. Review the design principles above and try again." type="button">
       Check Answer
     </button>
 <div aria-live="polite" class="feedback"></div>
 </div>
+<div class="button-row">
+<button class="ghost-button substep-prev" type="button">Back</button>
+</div>
+</div>
+</div>
 </section>
+
 <section class="screen" data-title="Professionalism">
-<span class="badge">Section 7</span>
+<span class="badge">Section 9</span>
 <h1>Maintaining Professionalism</h1>
 <div class="two-col">
 <div class="card">
@@ -590,116 +713,43 @@
 </ul>
 </div>
 </div>
-<h2>Is My Portfolio Professional?</h2>
-<div class="checklist" id="professionalChecklist">
-<label class="check-row"><input type="checkbox"/> <span>My writing has been proofread.</span></label>
-<label class="check-row"><input type="checkbox"/> <span>My links and buttons work.</span></label>
-<label class="check-row"><input type="checkbox"/> <span>My color palette is consistent.</span></label>
-<label class="check-row"><input type="checkbox"/> <span>My project descriptions include context.</span></label>
-<label class="check-row"><input type="checkbox"/> <span>My contact information is appropriate.</span></label>
-<label class="check-row"><input type="checkbox"/> <span>I removed private or confidential information.</span></label>
-<label class="check-row"><input type="checkbox"/> <span>My site is readable on a phone.</span></label>
-<label class="check-row"><input type="checkbox"/> <span>My content sounds like me.</span></label>
-<div class="check-progress">
-<div aria-hidden="true" class="mini-track"><div class="mini-fill" id="checklistFill"></div></div>
-<strong id="checklistText">0 of 8</strong>
-</div>
-</div>
-</section>
-<section class="screen" data-title="Build the Skeleton">
-<span class="badge">Section 8</span>
-<h1>Build Your Skeleton ePortfolio With Vibe Coding</h1>
-<p>
-        Vibe coding is a conversational approach to website creation. You describe the site you want,
-        the required sections, and the style you prefer. An AI assistant generates starter HTML and CSS
-        that you review, personalize, test, and improve.
-      </p><section aria-labelledby="github-visual-heading" class="visual-inset"><div class="visual-inset-heading"><div><span class="studio-label">Visual guide</span><h2 id="github-visual-heading">Recognize the GitHub Pages Workflow</h2></div><p>These screenshots supplement the step-by-step directions. GitHub interfaces may change slightly, but the overall workflow remains the same.</p></div><div class="screenshot-grid"><figure><img alt="Close-up example of a GitHub repository and project files" src="assets/images/github/github-repository.jpg"/><figcaption>A repository stores the files that make up your ePortfolio.</figcaption></figure><figure><img alt="Closer view of project files in a GitHub repository" src="assets/images/github/github-repository-close.jpg"/><figcaption>Your index.html, style.css, and app.js files work together to create the published site.</figcaption></figure></div></section>
-<div class="stepper">
-<div class="step"><span class="step-number">1</span><div><h3>Plan</h3><p>Choose your displayed name, degree program, career direction, required sections, colors, and profile-image approach.</p></div></div>
-<div class="step"><span class="step-number">2</span><div><h3>Prompt</h3><p>Describe the skeleton site, accessibility expectations, and placeholders you need.</p></div></div>
-<div class="step"><span class="step-number">3</span><div><h3>Generate</h3><p>Ask the assistant to create starter HTML and CSS compatible with GitHub Pages.</p></div></div>
-<div class="step"><span class="step-number">4</span><div><h3>Review</h3><p>Verify that sections, navigation, colors, accessibility, and privacy protections are appropriate.</p></div></div>
-<div class="step"><span class="step-number">5</span><div><h3>Personalize</h3><p>Replace placeholders with your real information, work, goals, skills, and reflections.</p></div></div>
-<div class="step"><span class="step-number">6</span><div><h3>Publish</h3><p>Commit the files to GitHub and publish them through GitHub Pages.</p></div></div>
-</div>
-<h2>Starter Prompt</h2>
-<pre id="starterPrompt">Create an accessible, mobile-responsive skeleton ePortfolio using HTML and CSS.
-
-Include these sections:
-
-Home
-About Me
-Skills
-Projects
-Resume
-Certifications
-Professional Growth
-Contact
-
-Use a professional technology-inspired design with a consistent color palette.
-
-Include placeholder instructions that clearly tell me what to replace.
-
-Use semantic HTML, keyboard-accessible navigation, visible focus indicators, readable text contrast, and a skip-to-content link.
-
-Do not invent achievements, certifications, work experience, contact information, or skills.
-
-Create one project placeholder that includes fields for the project title, course, overview, skills demonstrated, reflection, and artifact link.
-
-Make the files compatible with GitHub Pages.</pre>
-<div class="button-row">
-<button class="primary-button" id="copyPromptButton" type="button">Copy Starter Prompt</button>
-</div>
-<div class="warning callout">
-        The AI creates the scaffold. You supply the identity, evidence, reflection, accuracy, and professional judgment.
-      </div>
-</section>
-<section class="screen" data-title="ePortfolio Coach">
-<span class="badge">Section 9</span>
-<h1>Meet the ECPI ePortfolio Coach</h1>
-<div class="assistant-box">
-<h2>Plan, build, review, and improve your ePortfolio</h2>
-<p>
-          The ECPI ePortfolio Coach can help you brainstorm sections, refine project descriptions,
-          identify skills demonstrated by your coursework, develop reflection responses, review
-          professional tone, and generate accessible starter code.
-        </p>
-<div class="button-row">
-<a class="primary-button" href="https://genai.ecpi.edu/assistants/PDT-wP51aMOMV1Lw" rel="noopener" target="_blank">
-            Open the ECPI ePortfolio Coach
-          </a>
-</div>
-</div>
-<h2>Use the assistant responsibly</h2>
-<p>
-        Review every recommendation, verify accuracy, protect private information, and revise the final
-        content so it reflects your authentic experiences and professional voice.
-      </p>
 </section>
 <section class="screen" data-title="Showcase Projects">
 <span class="badge">Section 10</span>
-<h1>Two Ways to Showcase a Project</h1><figure class="lesson-visual project-photo"><img alt="Hands using a laptop to review a professional project portfolio" src="assets/images/projects/project-laptop-v2.jpg"/><figcaption>A strong project entry combines a clear summary, evidence of skills, reflection, and an accessible artifact.</figcaption></figure>
+<h1>Two Ways to Showcase a Project</h1><figure class="lesson-visual project-photo"><img alt="Illustration of a laptop displaying a projects page with three project cards and a reflection panel" src="assets/images/projects/project-laptop.svg"/><figcaption>A strong project entry combines a clear summary, evidence of skills, reflection, and an accessible artifact.</figcaption></figure>
 <p class="section-intro">
         Your project should be easy to understand and easy to maintain. Every project needs context,
-        evidence, and reflection—but students may choose how much web development they want to manage.
+        evidence, and reflection&mdash;but you may choose how much web development you want to manage.
       </p>
-<div aria-label="Coursework becomes a portfolio project and interview evidence" class="visual-flow">
-<div class="flow-node">Coursework</div><span aria-hidden="true" class="flow-arrow">→</span>
-<div class="flow-node">Project Summary</div><span aria-hidden="true" class="flow-arrow">→</span>
-<div class="flow-node">Artifact</div><span aria-hidden="true" class="flow-arrow">→</span>
-<div class="flow-node">Reflection</div><span aria-hidden="true" class="flow-arrow">→</span>
-<div class="flow-node">Interview Evidence</div>
-</div>
 <div class="project-method-grid">
+<article class="project-method recommended-method">
+<div aria-hidden="true" class="method-icon">PDF</div>
+<span class="method-label">Recommended option</span>
+<h2>Project Summary + Shared PDF</h2>
+<p>
+            Create a separate PDF summary for a major project that includes links to any project files you
+            stored in Google Drive, and then link to that document in your ePortfolio. AI could help you
+            generate that PDF project summary with images, web-friendly design formats, etc.
+          </p>
+<h3>You maintain</h3>
+<ul>
+<li>A project card on the ePortfolio that links to the file</li>
+<li>A PDF project summary stored in Google Drive</li>
+</ul>
+<button aria-disabled="true" class="secondary-button demo-disabled" type="button">
+            View Sample PDF Link
+          </button>
+<p class="microcopy">Replace this demonstration button with the public Google Drive PDF link.</p>
+</article>
 <article class="project-method advanced-method">
 <div aria-hidden="true" class="method-icon">&lt;/&gt;</div>
 <span class="method-label">Advanced option</span>
 <h2>Dedicated Project Page</h2>
 <p>
-            Create a separate HTML page for a major project. This is best for students who want to
+            Create a separate HTML page for a major project. This is best if you want to
             demonstrate web-development skills or present screenshots, code, diagrams, and multiple files.
           </p>
-<h3>Students maintain</h3>
+<h3>You maintain</h3>
 <ul>
 <li>A project card on the main portfolio</li>
 <li>A separate HTML project page</li>
@@ -708,25 +758,6 @@ Make the files compatible with GitHub Pages.</pre>
 <a class="primary-button" href="https://jharvellidmecpi.github.io/eportfolio/projects/cyb320.html" rel="noopener" target="_blank">
             View Dedicated Project-Page Example
           </a>
-</article>
-<article class="project-method recommended-method">
-<div aria-hidden="true" class="method-icon">PDF</div>
-<span class="method-label">Recommended option</span>
-<h2>Project Summary + Shared PDF</h2>
-<p>
-            Add the project summary directly to the main ePortfolio, then link to a view-only PDF stored
-            in Google Drive. Students maintain one website instead of a separate page for every project.
-          </p>
-<h3>Students maintain</h3>
-<ul>
-<li>One project card on the main portfolio</li>
-<li>One PDF artifact in Google Drive</li>
-<li>One public, view-only link</li>
-</ul>
-<button aria-disabled="true" class="secondary-button demo-disabled" type="button">
-            View Sample PDF Link
-          </button>
-<p class="microcopy">Replace this demonstration button with the public Google Drive PDF link.</p>
 </article>
 </div>
 <section aria-labelledby="pdf-example-heading" class="sample-project-card">
@@ -760,9 +791,9 @@ Make the files compatible with GitHub Pages.</pre>
 <ol class="numbered-cards">
 <li><strong>Convert the artifact to PDF.</strong><span>Remove assignment directions, comments, tracked changes, and private information.</span></li>
 <li><strong>Upload the PDF to Google Drive.</strong><span>Use a professional filename that identifies the project.</span></li>
-<li><strong>Open Share settings.</strong><span>Change General access to “Anyone with the link,” and keep the role set to Viewer.</span></li>
+<li><strong>Open Share settings.</strong><span>Change General access to "Anyone with the link," and keep the role set to Viewer.</span></li>
 <li><strong>Copy and test the link.</strong><span>Open it in a private browser window to confirm that no sign-in is required.</span></li>
-<li><strong>Add it to the ePortfolio.</strong><span>Use descriptive button text such as “View Network Segmentation Project PDF.”</span></li>
+<li><strong>Add it to the ePortfolio.</strong><span>Use descriptive button text such as "View Network Segmentation Project PDF."</span></li>
 </ol>
 </div>
 <div class="warning callout">
@@ -770,201 +801,31 @@ Make the files compatible with GitHub Pages.</pre>
         Use a redacted or simulated artifact when the original work cannot be shared publicly.
       </div>
 </section>
-<section class="screen" data-title="Reflective Practice">
+
+<section class="screen" data-title="ePortfolio Coach">
 <span class="badge">Section 11</span>
-<h1>Reflective Practice: Understand Your Own Work</h1>
-<p class="section-intro">
-        A professional ePortfolio is valuable only when you can explain what you created, why you made
-        particular decisions, what you learned, and how the experience changed your approach.
-      </p><figure class="reflection-quote"><blockquote>“We do not learn from experience. We learn from reflecting on experience.”</blockquote><figcaption>— commonly attributed to John Dewey</figcaption></figure>
-<div class="reflection-hero">
-<div>
-<span class="studio-label">From completion to confidence</span>
-<h2>Reflection turns an assignment into a professional story.</h2>
+<h1>Meet the ECPI ePortfolio Coach</h1>
+<div class="assistant-box">
+<h2>Plan, build, review, and improve your ePortfolio</h2>
 <p>
-            It helps you identify evidence of growth, connect coursework to career skills, and prepare
-            to discuss your work naturally instead of memorizing an AI-generated script.
-          </p>
-</div>
-<svg aria-label="Reflection cycle from experience to career connection" class="reflection-illustration" role="img" viewbox="0 0 360 240">
-<defs><marker id="arrowhead" markerheight="7" markerwidth="10" orient="auto" refx="9" refy="3.5"><polygon fill="#168a8a" points="0 0, 10 3.5, 0 7"></polygon></marker></defs>
-<circle cx="180" cy="120" fill="#17365d" r="45"></circle><text fill="white" font-size="18" font-weight="700" text-anchor="middle" x="180" y="115">YOUR</text><text fill="white" font-size="18" font-weight="700" text-anchor="middle" x="180" y="138">GROWTH</text>
-<circle cx="180" cy="30" fill="#eaf1f8" r="28" stroke="#2563a6" stroke-width="3"></circle><text fill="#17365d" font-size="12" font-weight="700" text-anchor="middle" x="180" y="35">DO</text>
-<circle cx="300" cy="120" fill="#e4f3f3" r="32" stroke="#168a8a" stroke-width="3"></circle><text fill="#17365d" font-size="12" font-weight="700" text-anchor="middle" x="300" y="125">THINK</text>
-<circle cx="180" cy="210" fill="#fff7db" r="30" stroke="#d9a72e" stroke-width="3"></circle><text fill="#17365d" font-size="12" font-weight="700" text-anchor="middle" x="180" y="215">LEARN</text>
-<circle cx="60" cy="120" fill="#fbeaea" r="32" stroke="#c74c47" stroke-width="3"></circle><text fill="#17365d" font-size="12" font-weight="700" text-anchor="middle" x="60" y="125">APPLY</text>
-<path d="M205 43 C260 55 282 76 288 91" fill="none" marker-end="url(#arrowhead)" stroke="#168a8a" stroke-width="4"></path>
-<path d="M286 148 C270 181 230 198 212 202" fill="none" marker-end="url(#arrowhead)" stroke="#168a8a" stroke-width="4"></path>
-<path d="M148 201 C105 192 78 165 69 151" fill="none" marker-end="url(#arrowhead)" stroke="#168a8a" stroke-width="4"></path>
-<path d="M72 91 C90 61 132 42 151 38" fill="none" marker-end="url(#arrowhead)" stroke="#168a8a" stroke-width="4"></path>
-</svg>
-</div>
-<div class="concept-grid">
-<article class="concept-card">
-<div aria-hidden="true" class="concept-symbol">R</div>
-<h2>Reflection</h2>
-<p>Looking back on an experience to identify learning, challenges, strengths, and future improvements.</p>
-<p class="concept-example"><strong>Ask:</strong> What happened, and what did I learn from it?</p>
-</article>
-<article class="concept-card">
-<div aria-hidden="true" class="concept-symbol">M</div>
-<h2>Metacognition</h2>
-<p>Thinking about how you think and learn, including the strategies that helped or limited you.</p>
-<p class="concept-example"><strong>Ask:</strong> How did I approach this, and why?</p>
-</article>
-<article class="concept-card">
-<div aria-hidden="true" class="concept-symbol">C</div>
-<h2>Critical Thinking</h2>
-<p>Analyzing information, evaluating options, explaining decisions, and drawing supported conclusions.</p>
-<p class="concept-example"><strong>Ask:</strong> What evidence guided my decision?</p>
-</article>
-<article class="concept-card">
-<div aria-hidden="true" class="concept-symbol">G</div>
-<h2>Professional Growth</h2>
-<p>Recognizing how your knowledge, skills, confidence, and professional judgment develop over time.</p>
-<p class="concept-example"><strong>Ask:</strong> What can I do now that I could not do before?</p>
-</article>
-</div>
-<h2>The D-A-E-I-C Reflection Framework</h2>
-<div aria-label="Five-part reflection framework" class="reflection-framework">
-<article><span>D</span><h3>Describe</h3><p>What did you create or complete?</p></article>
-<article><span>A</span><h3>Analyze</h3><p>What problem, goal, evidence, and decisions shaped your work?</p></article>
-<article><span>E</span><h3>Evaluate</h3><p>What worked well, and what was challenging?</p></article>
-<article><span>I</span><h3>Improve</h3><p>What would you revise or do differently next time?</p></article>
-<article><span>C</span><h3>Connect</h3><p>How does this learning relate to your career and future work?</p></article>
-</div>
-<aside class="employer-tip" aria-label="Employer perspective">
-  <span class="tip-icon" aria-hidden="true">★</span>
-  <div>
-    <strong>Employer Perspective</strong>
-    <p>
-      The artifact shows what you produced. Your reflection shows how you think,
-      respond to challenges, learn from feedback, and improve.
-    </p>
-  </div>
-</aside>
-</section>
-<section class="screen" data-title="Speak to Your Work">
-<span class="badge">Section 12</span>
-<h1>Speak to Your Work in Your Own Words</h1>
-<p class="section-intro">
-        Employers may ask you to explain a project, defend a decision, discuss feedback, or identify what
-        you would improve. Your ePortfolio should help you prepare—not give you a script to memorize.
-      </p><section aria-labelledby="interview-video-heading" class="video-card"><div class="video-frame"><img alt="Career expo scene used as a placeholder for the interview preparation video" src="assets/images/hero/career-expo.jpg"/><div aria-hidden="true" class="video-overlay">Video placeholder</div></div><div class="video-copy"><span class="studio-label">Career Coach Minute · 60–90 seconds</span><h2 id="interview-video-heading">Talking About Your Portfolio During an Interview</h2><p>Replace the placeholder with an approved Panopto, YouTube, or MP4 video when the recording is ready. The transcript below makes the content available now.</p><details><summary>Read the interview video transcript</summary><p>Imagine an interviewer asks, “Tell me about one of the projects in your ePortfolio.” Instead of saying only that you completed it for class, briefly explain the problem or goal, the approach you took, the tools you used, and the skills you developed.</p><p>Discussing a challenge is also valuable. Explain how you responded, what you learned, and what you would improve today. Your ePortfolio is not simply a collection of assignments; it is evidence of your thinking, growth, and readiness to contribute professionally.</p></details></div></section>
-<div class="story-structure">
-<div class="story-step"><span>1</span><strong>Context</strong><p>What was the project and why did it matter?</p></div>
-<div class="story-step"><span>2</span><strong>Approach</strong><p>What process, tools, or strategies did you use?</p></div>
-<div class="story-step"><span>3</span><strong>Challenge</strong><p>What problem, limitation, or setback did you encounter?</p></div>
-<div class="story-step"><span>4</span><strong>Result</strong><p>What did you produce, discover, or improve?</p></div>
-<div class="story-step"><span>5</span><strong>Growth</strong><p>What did you learn, and how will you apply it?</p></div>
-</div>
-<h2>Practice Employer Questions</h2>
-<p>Select each question to reveal coaching prompts. Develop your own response using your actual experience.</p>
-<div class="accordion interview-accordion">
-<div class="accordion-item">
-<button aria-expanded="false" class="accordion-trigger" type="button">Tell me about a project in your portfolio. <span>+</span></button>
-<div class="accordion-panel"><p>Briefly name the project and goal. Explain your role, approach, key decisions, result, and one lesson you can apply professionally.</p></div>
-</div>
-<div class="accordion-item">
-<button aria-expanded="false" class="accordion-trigger" type="button">What was the most challenging part? <span>+</span></button>
-<div class="accordion-panel"><p>Describe a real obstacle, how you diagnosed it, what options you considered, what action you took, and what you learned.</p></div>
-</div>
-<div class="accordion-item">
-<button aria-expanded="false" class="accordion-trigger" type="button">Walk me through your decision-making process. <span>+</span></button>
-<div class="accordion-panel"><p>Identify the information or evidence you reviewed, alternatives you considered, constraints you faced, and why your final choice was reasonable.</p></div>
-</div>
-<div class="accordion-item">
-<button aria-expanded="false" class="accordion-trigger" type="button">What would you do differently now? <span>+</span></button>
-<div class="accordion-panel"><p>Show growth rather than regret. Explain what new knowledge, feedback, or experience would change your approach.</p></div>
-</div>
-<div class="accordion-item">
-<button aria-expanded="false" class="accordion-trigger" type="button">How did feedback affect your work? <span>+</span></button>
-<div class="accordion-panel"><p>Explain the feedback, how you evaluated it, what you revised, and how the revision improved the outcome or your process.</p></div>
-</div>
-<div class="accordion-item">
-<button aria-expanded="false" class="accordion-trigger" type="button">How does this project prepare you for this role? <span>+</span></button>
-<div class="accordion-panel"><p>Connect the project’s tasks and skills directly to the role’s responsibilities without overstating your experience.</p></div>
+          The ECPI ePortfolio Coach can help you brainstorm sections, refine project descriptions,
+          identify skills demonstrated by your coursework, develop reflection responses, review
+          professional tone, and generate accessible starter code.
+        </p>
+<div class="button-row">
+<a class="primary-button" href="https://genai.ecpi.edu/assistants/PDT-wP51aMOMV1Lw" rel="noopener" target="_blank">
+            Open the ECPI ePortfolio Coach
+          </a>
 </div>
 </div>
-<div class="authenticity-comparison">
-<article class="avoid-language">
-<span class="example-status">Avoid</span>
-<h2>Generic or memorized language</h2>
-<blockquote>“This project taught me many valuable skills and helped me grow professionally.”</blockquote>
-<p>This statement is vague and could describe almost any assignment.</p>
-</article>
-<article class="strong-language">
-<span class="example-status">Stronger approach</span>
-<h2>Specific, evidence-based language</h2>
-<blockquote>“Comparing router-on-a-stick with multilayer switching helped me understand how network size and traffic requirements affect design decisions.”</blockquote>
-<p>This response identifies the work, the learning, and the reasoning behind it.</p>
-</article>
-</div>
-</section>
-<section class="screen" data-title="Reflection Builder">
-<span class="badge">Section 13</span>
-<h1>Build an Authentic Project Reflection</h1>
-<p class="section-intro">
-        Use the prompts below to capture your own thinking. Write notes first; then combine and revise them
-        into a concise reflection that sounds like you.
+<h2>Use the assistant responsibly</h2>
+<p>
+        Review every recommendation, verify accuracy, protect private information, and revise the final
+        content so it reflects your authentic experiences and professional voice.
       </p>
-<div class="reflection-builder" id="reflectionBuilder">
-<label><span>1. Describe</span>What did you create, investigate, solve, or present?
-          <textarea id="reflectDescribe" placeholder="Describe the project in your own words..."></textarea>
-</label>
-<label><span>2. Analyze</span>What problem or goal did the project address, and what decisions did you make?
-          <textarea id="reflectAnalyze" placeholder="Explain your reasoning, evidence, tools, or process..."></textarea>
-</label>
-<label><span>3. Evaluate</span>What worked well, and what was most challenging?
-          <textarea id="reflectEvaluate" placeholder="Identify strengths and challenges..."></textarea>
-</label>
-<label><span>4. Improve</span>What would you change or do differently next time?
-          <textarea id="reflectImprove" placeholder="Identify a meaningful improvement..."></textarea>
-</label>
-<label><span>5. Connect</span>Which skills grew, and how does this connect to your professional goals?
-          <textarea id="reflectConnect" placeholder="Connect the experience to your future work..."></textarea>
-</label>
-</div>
-<div class="button-row">
-<button class="primary-button" id="buildReflectionButton" type="button">Build Reflection Draft</button>
-<button class="ghost-button" id="clearBuilderButton" type="button">Clear Builder</button>
-</div>
-<label for="reflectionDraft"><strong>Combined draft</strong></label>
-<textarea class="combined-reflection" id="reflectionDraft" placeholder="Your combined draft will appear here..."></textarea>
-<div class="button-row">
-<button class="secondary-button" id="copyBuiltReflectionButton" type="button">Copy Combined Draft</button>
-</div>
-<div class="warning callout">
-        A combined draft is only a starting point. Revise it for clarity, accuracy, specificity, and your own natural voice before publishing it.
-      </div>
-</section>
-<section class="screen" data-title="Portfolio Reflection">
-<span class="badge">Section 14</span>
-<h1>Reflect on Your Professional Portfolio</h1>
-<div class="callout">
-<strong>Prompt:</strong>
-        What do you want an employer or professional contact to understand about you after viewing your ePortfolio?
-      </div>
-<p>Consider these questions:</p>
-<ul>
-<li>What types of work do you hope to showcase?</li>
-<li>Which technical and professional skills do you want to demonstrate?</li>
-<li>What evidence supports those skills?</li>
-<li>What professional impression should your writing and design create?</li>
-<li>What is your next portfolio milestone?</li>
-</ul>
-<label for="reflectionText"><strong>Draft your response</strong></label>
-<textarea id="reflectionText" placeholder="Type your portfolio reflection here..."></textarea>
-<div class="button-row">
-<button class="primary-button" id="copyReflectionButton" type="button">Copy Reflection</button>
-<button class="ghost-button" id="clearReflectionButton" type="button">Clear</button>
-</div>
-<div class="warning callout">
-        This text area is for drafting. A standalone HTML lesson does not automatically submit your response to Canvas.
-      </div>
 </section>
 <section class="screen" data-title="Knowledge Check">
-<span class="badge">Section 15</span>
+<span class="badge">Section 12</span>
 <h1>Final Knowledge Check</h1>
 <p>Select the best answer for each question, then submit your responses.</p>
 <div class="quiz-question">
@@ -1000,10 +861,11 @@ Make the files compatible with GitHub Pages.</pre>
 <button class="primary-button" id="submitQuizButton" type="button">Submit Knowledge Check</button>
 <div aria-live="polite" class="feedback" id="quizResult"></div><section aria-labelledby="journey-ending-heading" class="journey-ending"><span class="studio-label">Next milestone</span><h2 id="journey-ending-heading">Your Professional Journey Starts Here</h2><p>Every assignment, project, and reflection you add can strengthen your professional story. Continue refining your ePortfolio throughout your program so it grows alongside your knowledge, skills, confidence, and career goals.</p><div class="button-row"><a class="primary-button" href="https://jharvellidmecpi.github.io/eportfolio/" rel="noopener" target="_blank">Continue Building My Portfolio</a><a class="secondary-button" href="https://genai.ecpi.edu/assistants/PDT-wP51aMOMV1Lw" rel="noopener" target="_blank">Open the ePortfolio Coach</a></div></section>
 </section>
+
 </main>
 <div aria-label="Lesson navigation" class="bottom-nav">
 <button class="prev" id="prevButton" type="button">Previous</button>
-<span class="screen-count" id="screenCount">Screen 1 of 15</span>
+<span class="screen-count" id="screenCount">Screen 1 of 12</span>
 <button class="next" id="nextButton" type="button">Next</button>
 </div>
 <script src="js/app.js"></script>

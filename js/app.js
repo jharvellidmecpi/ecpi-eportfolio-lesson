@@ -35,7 +35,7 @@
       prevButton.disabled = index === 0;
       nextButton.disabled = index === screens.length - 1;
 
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.scrollTo({ top: 0, behavior: 'auto' });
 
       if (window.innerWidth <= 900) {
         sidebar.classList.remove('open');
@@ -61,11 +61,21 @@
       menuButton.setAttribute('aria-expanded', String(open));
     });
 
+    // Reveal cards (Section 2): only one open at a time, like an accordion.
     document.querySelectorAll('.reveal-card button').forEach(button => {
       button.addEventListener('click', () => {
         const card = button.closest('.reveal-card');
-        const open = card.classList.toggle('open');
-        button.setAttribute('aria-expanded', String(open));
+        const willOpen = !card.classList.contains('open');
+
+        card.parentElement.querySelectorAll('.reveal-card').forEach(otherCard => {
+          if (otherCard !== card) {
+            otherCard.classList.remove('open');
+            otherCard.querySelector('button').setAttribute('aria-expanded', 'false');
+          }
+        });
+
+        card.classList.toggle('open', willOpen);
+        button.setAttribute('aria-expanded', String(willOpen));
       });
     });
 
@@ -77,6 +87,8 @@
       });
     });
 
+    // Inline knowledge-check buttons: feedback text is read from each button's
+    // own data attributes so the message always matches the question asked.
     document.querySelectorAll('.check-inline').forEach(button => {
       button.addEventListener('click', () => {
         const question = button.closest('.quiz-question');
@@ -92,126 +104,92 @@
         const correct = selected.value === button.dataset.answer;
         feedback.className = `feedback show ${correct ? 'good' : 'bad'}`;
         feedback.textContent = correct
-          ? 'Correct. The résumé summarizes qualifications, while the ePortfolio provides supporting evidence and context.'
-          : 'Not quite. Review the comparison above and try again.';
+          ? (button.dataset.correctFeedback || 'Correct.')
+          : (button.dataset.incorrectFeedback || 'Not quite. Review the section above and try again.');
       });
     });
 
-    const checklist = document.getElementById('professionalChecklist');
-    const checklistBoxes = Array.from(checklist.querySelectorAll('input[type="checkbox"]'));
-    const checklistFill = document.getElementById('checklistFill');
-    const checklistText = document.getElementById('checklistText');
+    // Color and Design (Section 6) sub-stepper: chunks the page into
+    // Palette / Typography / Accessibility so the screen isn't one long scroll.
+    const designSubsteps = document.getElementById('designSubsteps');
+    if (designSubsteps) {
+      const substeps = Array.from(designSubsteps.querySelectorAll('.design-substep'));
 
-    function updateChecklist() {
-      const checked = checklistBoxes.filter(box => box.checked).length;
-      checklistFill.style.width = `${(checked / checklistBoxes.length) * 100}%`;
-      checklistText.textContent = `${checked} of ${checklistBoxes.length}`;
+      function goToSubstep(index) {
+        substeps.forEach((step, i) => step.classList.toggle('active', i === index));
+        designSubsteps.scrollIntoView({ behavior: 'auto', block: 'start' });
+      }
+
+      designSubsteps.querySelectorAll('.substep-next').forEach(button => {
+        button.addEventListener('click', () => {
+          const current = substeps.findIndex(step => step.classList.contains('active'));
+          goToSubstep(Math.min(current + 1, substeps.length - 1));
+        });
+      });
+
+      designSubsteps.querySelectorAll('.substep-prev').forEach(button => {
+        button.addEventListener('click', () => {
+          const current = substeps.findIndex(step => step.classList.contains('active'));
+          goToSubstep(Math.max(current - 1, 0));
+        });
+      });
     }
 
-    checklistBoxes.forEach(box => box.addEventListener('change', updateChecklist));
+    // Color and Design (Section 6) palette preview: selecting a palette
+    // updates the live preview panel and the status text below it.
+    const paletteButtons = Array.from(document.querySelectorAll('.palette-option'));
+    const portfolioPreview = document.getElementById('portfolioPreview');
+    const paletteStatus = document.getElementById('paletteStatus');
 
-    document.getElementById('copyPromptButton').addEventListener('click', async (event) => {
-      const text = document.getElementById('starterPrompt').innerText;
-      try {
-        await navigator.clipboard.writeText(text);
-        event.currentTarget.textContent = 'Prompt Copied';
-      } catch {
-        event.currentTarget.textContent = 'Select and copy manually';
-      }
-    });
+    paletteButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const palette = button.dataset.palette;
+        const paletteName = button.querySelector('.palette-name').textContent.trim();
 
-    document.getElementById('copyReflectionButton').addEventListener('click', async (event) => {
-      const text = document.getElementById('reflectionText').value;
-      if (!text.trim()) {
-        event.currentTarget.textContent = 'Write a reflection first';
-        return;
-      }
-      try {
-        await navigator.clipboard.writeText(text);
-        event.currentTarget.textContent = 'Reflection Copied';
-      } catch {
-        event.currentTarget.textContent = 'Select and copy manually';
-      }
-    });
+        paletteButtons.forEach(other => {
+          other.classList.toggle('selected', other === button);
+          other.setAttribute('aria-pressed', String(other === button));
+        });
 
-    document.getElementById('clearReflectionButton').addEventListener('click', () => {
-      document.getElementById('reflectionText').value = '';
-    });
+        if (portfolioPreview) {
+          portfolioPreview.className = `portfolio-preview preview-${palette}`;
+        }
 
-    document.getElementById('submitQuizButton').addEventListener('click', () => {
-      const answers = { q1: 'b', q2: 'a', q3: 'c', q4: 'b', q5: 'a' };
-      let score = 0;
-      let answered = 0;
-
-      Object.entries(answers).forEach(([name, correct]) => {
-        const selected = document.querySelector(`input[name="${name}"]:checked`);
-        if (selected) {
-          answered += 1;
-          if (selected.value === correct) score += 1;
+        if (paletteStatus) {
+          paletteStatus.textContent = `Previewing the ${paletteName} palette.`;
         }
       });
-
-      const result = document.getElementById('quizResult');
-
-      if (answered < 5) {
-        result.className = 'feedback show bad';
-        result.textContent = `You answered ${answered} of 5 questions. Complete every question before submitting.`;
-        return;
-      }
-
-      const passed = score >= 4;
-      result.className = `feedback show ${passed ? 'good' : 'bad'}`;
-      result.innerHTML = passed
-        ? `<strong>${score} of 5 correct.</strong> You are ready to begin building your ePortfolio skeleton.`
-        : `<strong>${score} of 5 correct.</strong> Review the lesson sections, then try again.`;
     });
 
+    // Final Knowledge Check (last section)
+    const submitQuizButton = document.getElementById('submitQuizButton');
+    if (submitQuizButton) {
+      submitQuizButton.addEventListener('click', () => {
+        const answers = { q1: 'b', q2: 'a', q3: 'c', q4: 'b', q5: 'a' };
+        let score = 0;
+        let answered = 0;
 
+        Object.entries(answers).forEach(([name, correct]) => {
+          const selected = document.querySelector(`input[name="${name}"]:checked`);
+          if (selected) {
+            answered += 1;
+            if (selected.value === correct) score += 1;
+          }
+        });
 
-    const buildReflectionButton = document.getElementById('buildReflectionButton');
-    const clearBuilderButton = document.getElementById('clearBuilderButton');
-    const copyBuiltReflectionButton = document.getElementById('copyBuiltReflectionButton');
-    const reflectionDraft = document.getElementById('reflectionDraft');
+        const result = document.getElementById('quizResult');
 
-    if (buildReflectionButton) {
-      buildReflectionButton.addEventListener('click', () => {
-        const parts = [
-          document.getElementById('reflectDescribe').value.trim(),
-          document.getElementById('reflectAnalyze').value.trim(),
-          document.getElementById('reflectEvaluate').value.trim(),
-          document.getElementById('reflectImprove').value.trim(),
-          document.getElementById('reflectConnect').value.trim()
-        ].filter(Boolean);
-
-        if (!parts.length) {
-          reflectionDraft.value = 'Complete at least one reflection prompt before building your draft.';
+        if (answered < 5) {
+          result.className = 'feedback show bad';
+          result.textContent = `You answered ${answered} of 5 questions. Complete every question before submitting.`;
           return;
         }
 
-        reflectionDraft.value = parts.join(' ');
-      });
-    }
-
-    if (clearBuilderButton) {
-      clearBuilderButton.addEventListener('click', () => {
-        ['reflectDescribe','reflectAnalyze','reflectEvaluate','reflectImprove','reflectConnect','reflectionDraft']
-          .forEach(id => { const el = document.getElementById(id); if (el) el.value = ''; });
-      });
-    }
-
-    if (copyBuiltReflectionButton) {
-      copyBuiltReflectionButton.addEventListener('click', async (event) => {
-        const text = reflectionDraft.value.trim();
-        if (!text) {
-          event.currentTarget.textContent = 'Build a draft first';
-          return;
-        }
-        try {
-          await navigator.clipboard.writeText(text);
-          event.currentTarget.textContent = 'Draft Copied';
-        } catch {
-          event.currentTarget.textContent = 'Select and copy manually';
-        }
+        const passed = score >= 4;
+        result.className = `feedback show ${passed ? 'good' : 'bad'}`;
+        result.textContent = passed
+          ? `${score} of 5 correct. You are ready to begin building your ePortfolio.`
+          : `${score} of 5 correct. Review the lesson sections, then try again.`;
       });
     }
 
