@@ -1228,6 +1228,7 @@
 
       .main { margin-left: 0; }
       .bottom-nav { left: 0; }
+      .nav-gate-message { left: 0; }
 
       .stat-grid,
       .three-col,
@@ -1803,13 +1804,18 @@
 /* ===== Navigation gate message ===== */
 .nav-gate-message {
   display: none;
-  margin: 10px 1.25rem 0;
-  padding: 10px 14px;
+  position: fixed;
+  left: var(--sidebar-width);
+  right: 0;
+  bottom: 76px;
+  margin: 0;
+  padding: 10px 28px;
   background: var(--soft-coral);
   color: #87332f;
-  border-radius: 8px;
+  border-top: 1px solid #e0b3ae;
   font-weight: 700;
   font-size: 0.9rem;
+  z-index: 139;
 }
 
 .nav-gate-message.show {
