@@ -1577,6 +1577,7 @@
 .welcome-banner {
   /* Busy background image removed per feedback; plain gradient keeps focus on the heading.
      Shortened and widened per feedback so it reads as a banner strip, not a tall block. */
+  position: relative;
   min-height: 150px;
   margin: 18px 0 28px;
   padding: clamp(20px, 4vw, 34px) clamp(24px, 5vw, 54px);
@@ -1588,6 +1589,77 @@
   border-radius: var(--radius);
   box-shadow: var(--shadow);
   overflow: hidden;
+}
+
+.welcome-banner::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: radial-gradient(rgba(255, 255, 255, .45) 1.4px, transparent 1.6px);
+  background-size: 16px 16px;
+  background-position: right bottom;
+  -webkit-mask-image: radial-gradient(circle at 100% 100%, black 0%, transparent 60%);
+  mask-image: radial-gradient(circle at 100% 100%, black 0%, transparent 60%);
+}
+
+.feature-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 22px 0 26px;
+}
+
+.feature-item {
+  flex: 1 1 140px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 18px 12px;
+  text-align: center;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: .85rem;
+  font-weight: 700;
+  color: var(--navy);
+}
+
+.feature-icon {
+  width: 46px;
+  height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 2px solid var(--blue);
+  color: var(--blue);
+}
+
+.feature-icon svg { width: 22px; height: 22px; }
+
+button.feature-cta {
+  cursor: pointer;
+  font: inherit;
+}
+
+.feature-cta {
+  background: var(--blue);
+  border-color: var(--blue);
+  color: white;
+}
+
+.feature-cta .feature-icon {
+  background: white;
+  border-color: white;
+  color: var(--blue);
+}
+
+.feature-cta:hover { background: var(--navy); border-color: var(--navy); }
+
+@media (max-width: 640px) {
+  .feature-item { flex: 1 1 45%; }
 }
 
 .welcome-visual {
