@@ -269,29 +269,62 @@
       });
     });
 
-    // Design Studio (Section 8) principles: cards are stacked in normal
-    // document flow (so they remain fully readable, keyboard-navigable, and
-    // screen-reader friendly without any JS at all) and flip into place as
-    // each one scrolls into view. No scroll-hijacking: the page scrolls
-    // normally, this only toggles a visual transition per card.
-    const scrollFlipCards = Array.from(document.querySelectorAll('.scroll-flip'));
+    // Accessibility flashcards (Section 8): one topic at a time, click or the
+    // flip icon reveals the tip on the back, arrows move between topics.
+    const a11yTopics = [
+      { front: 'Color Contrast', back: 'Use dark text on light backgrounds or light text on sufficiently dark backgrounds.' },
+      { front: 'Heading Structure', back: 'Organize content using meaningful headings in a logical order.' },
+      { front: 'Alternative Text', back: 'Alternative text, often called alt text, is a short written description of an image that screen readers announce to visitors who cannot see it. Add helpful alt text to meaningful images and avoid repeating nearby text.' },
+      { front: 'Descriptive Links', back: 'Use labels such as "View Network Security Project" instead of vague wording such as "Click here."' },
+      { front: 'Keyboard Access', back: 'Visitors should be able to reach navigation, buttons, and links without using a mouse.' },
+      { front: 'Mobile Layout', back: 'Test the portfolio on smaller screens to confirm that text, navigation, and project content remain usable.' }
+    ];
+    const a11yCard = document.getElementById('a11yFlashcard');
+    const a11yFront = document.getElementById('a11yCardFront');
+    const a11yBack = document.getElementById('a11yCardBack');
+    const a11yFlipBtn = document.getElementById('a11yFlipBtn');
+    const a11yPrev = document.getElementById('a11yFlashcardPrev');
+    const a11yNext = document.getElementById('a11yFlashcardNext');
+    const a11yStatus = document.getElementById('a11yFlashcardStatus');
+    let a11yIndex = 0;
+    let a11yFlipped = false;
 
-    if (scrollFlipCards.length && 'IntersectionObserver' in window) {
-      const flipObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('in-view');
-            flipObserver.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.3 });
-
-      scrollFlipCards.forEach(card => flipObserver.observe(card));
-    } else {
-      // No IntersectionObserver support: show all cards immediately rather
-      // than leaving them stuck invisible.
-      scrollFlipCards.forEach(card => card.classList.add('in-view'));
+    function renderA11yCard() {
+      const topic = a11yTopics[a11yIndex];
+      a11yFront.textContent = topic.front;
+      a11yBack.textContent = topic.back;
+      a11yFront.hidden = a11yFlipped;
+      a11yBack.hidden = !a11yFlipped;
+      a11yCard.setAttribute('aria-pressed', String(a11yFlipped));
+      a11yStatus.textContent = `${a11yIndex + 1} of ${a11yTopics.length}`;
+      a11yPrev.disabled = a11yIndex === 0;
+      a11yNext.disabled = a11yIndex === a11yTopics.length - 1;
     }
+
+    function flipA11yCard() {
+      a11yFlipped = !a11yFlipped;
+      renderA11yCard();
+    }
+
+    if (a11yCard) {
+      a11yFlipBtn.addEventListener('click', (e) => { e.stopPropagation(); flipA11yCard(); });
+      a11yCard.addEventListener('click', flipA11yCard);
+      a11yCard.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); flipA11yCard(); }
+      });
+      a11yPrev.addEventListener('click', () => {
+        a11yIndex = Math.max(0, a11yIndex - 1);
+        a11yFlipped = false;
+        renderA11yCard();
+      });
+      a11yNext.addEventListener('click', () => {
+        a11yIndex = Math.min(a11yTopics.length - 1, a11yIndex + 1);
+        a11yFlipped = false;
+        renderA11yCard();
+      });
+      renderA11yCard();
+    }
+
 
     // Recommended ePortfolio Sections (Section 6) carousel: shows one card at
     // a time with explicit Previous/Next controls (no auto-advance).
