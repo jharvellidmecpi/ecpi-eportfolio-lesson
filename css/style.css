@@ -1187,7 +1187,7 @@
 .numbered-cards li strong { color: var(--navy); }
 .numbered-cards li span { color: var(--muted); }
 .reflection-hero { display: grid; grid-template-columns: 1.1fr .9fr; gap: 28px; align-items: center; margin: 26px 0; padding: 28px; background: linear-gradient(135deg, var(--soft-teal), var(--soft-blue)); border-radius: var(--radius); }
-.reflection-illustration { width: 100%; max-width: 360px; margin: 0 auto; }
+.reflection-illustration { width: 100%; max-width: 360px; margin: 0 auto; display: block; border-radius: 16px; box-shadow: var(--shadow); }
 .concept-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; margin: 26px 0; }
 .concept-card { position: relative; padding: 24px; background: white; border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); }
 .concept-symbol { width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; border-radius: 12px; background: var(--navy); color: white; font-weight: 900; }
