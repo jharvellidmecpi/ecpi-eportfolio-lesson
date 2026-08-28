@@ -1,17 +1,17 @@
     :root {
-      --navy: #17365d;
-      --blue: #1b8f6b;
-      --teal: #1b8f6b;
-      --gold: #17365d;
+      --navy: #14213d;
+      --blue: #1c6feb;
+      --teal: #3fa7a0;
+      --gold: #f2b705;
       --coral: #c74c47;
       --bg: #f5f7fa;
       --panel: #ffffff;
       --text: #263442;
       --muted: #5f6b76;
       --border: #d8dee6;
-      --soft-blue: #eaf1f8;
-      --soft-teal: #e3f5ee;
-      --soft-gold: #eaf1f8;
+      --soft-blue: #e8f0fd;
+      --soft-teal: #e2f3f1;
+      --soft-gold: #fff6dc;
       --soft-coral: #fbeaea;
       --sidebar-width: 290px;
       --header-height: 68px;
@@ -626,7 +626,7 @@
     }
 
     .feedback.show { display: block; }
-    .feedback.good { background: var(--soft-teal); color: #0d6666; }
+    .feedback.good { background: var(--soft-teal); color: #1a6b6f; }
     .feedback.bad { background: var(--soft-coral); color: #87332f; }
 
     .bottom-nav {
@@ -1742,7 +1742,7 @@
 .match-btn.matched {
   border-color: var(--teal);
   background: var(--soft-teal);
-  color: #0d6666;
+  color: #1a6b6f;
 }
 
 .match-btn.matched::after {
@@ -1818,7 +1818,7 @@
 .step-tab[aria-selected="true"] {
   border-color: var(--teal);
   background: var(--soft-teal);
-  color: #0d6666;
+  color: #1a6b6f;
 }
 
 .step-tab.step-done::before {
@@ -1826,7 +1826,88 @@
   font-weight: 900;
 }
 
-/* ===== Lesson summary tags (Section 1) ===== */
+/* ===== Showcase cycle diagram panel (Section 10) ===== */
+.diagram-panel {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  flex-wrap: wrap;
+  background: linear-gradient(135deg, var(--soft-teal), #f2f9f8);
+  border-radius: 20px;
+  padding: 28px 32px;
+  margin: 20px 0 30px;
+}
+
+.diagram-panel-text {
+  flex: 1 1 300px;
+}
+
+.diagram-panel-text h2 {
+  margin: 6px 0 10px;
+}
+
+.eyebrow-mint {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #1a6b6f;
+}
+
+.growth-cycle {
+  flex: 0 0 300px;
+  width: 300px;
+  height: 220px;
+}
+
+@media (max-width: 720px) {
+  .growth-cycle { flex-basis: 100%; width: 100%; max-width: 320px; margin: 0 auto; }
+}
+
+/* ===== Showcase timeline (Section 10) ===== */
+.showcase-timeline {
+  position: relative;
+  margin: 10px 0 30px;
+  padding-left: 46px;
+}
+
+.showcase-timeline::before {
+  content: "";
+  position: absolute;
+  left: 19px;
+  top: 8px;
+  bottom: 8px;
+  width: 2px;
+  background: var(--border);
+}
+
+.timeline-step {
+  position: relative;
+  margin-bottom: 34px;
+}
+
+.timeline-marker {
+  position: absolute;
+  left: -46px;
+  top: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--navy);
+  color: white;
+  font-weight: 800;
+  font-size: 1.05rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.timeline-content h2 {
+  margin-top: 4px;
+}
+
 .lesson-tags {
   display: flex;
   flex-wrap: wrap;
@@ -1842,7 +1923,7 @@
 }
 
 .lesson-tag-navy { background: var(--soft-blue); color: var(--navy); }
-.lesson-tag-mint { background: var(--soft-teal); color: #106b51; }
+.lesson-tag-mint { background: var(--soft-teal); color: #1a6b6f; }
 .lesson-tag-coral { background: var(--soft-coral); color: #8a332e; }
 
 .flashcard-stack {
