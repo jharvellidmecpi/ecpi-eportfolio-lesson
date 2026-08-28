@@ -269,6 +269,30 @@
       });
     });
 
+    // Design Studio (Section 8) principles: cards are stacked in normal
+    // document flow (so they remain fully readable, keyboard-navigable, and
+    // screen-reader friendly without any JS at all) and flip into place as
+    // each one scrolls into view. No scroll-hijacking: the page scrolls
+    // normally, this only toggles a visual transition per card.
+    const scrollFlipCards = Array.from(document.querySelectorAll('.scroll-flip'));
+
+    if (scrollFlipCards.length && 'IntersectionObserver' in window) {
+      const flipObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+            flipObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.3 });
+
+      scrollFlipCards.forEach(card => flipObserver.observe(card));
+    } else {
+      // No IntersectionObserver support: show all cards immediately rather
+      // than leaving them stuck invisible.
+      scrollFlipCards.forEach(card => card.classList.add('in-view'));
+    }
+
     // Recommended ePortfolio Sections (Section 6) carousel: shows one card at
     // a time with explicit Previous/Next controls (no auto-advance).
     const carouselItems = Array.from(document.querySelectorAll('#sectionsCarouselTrack .accessibility-card'));
