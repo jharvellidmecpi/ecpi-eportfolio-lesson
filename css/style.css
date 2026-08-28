@@ -268,9 +268,14 @@
     }
 
     .stat-grid { grid-template-columns: repeat(3, 1fr); }
-    .card-grid { grid-template-columns: repeat(2, 1fr); align-items: start; }
+    .card-grid { grid-template-columns: repeat(2, 1fr); }
     .two-col { grid-template-columns: repeat(2, 1fr); }
     .three-col { grid-template-columns: repeat(3, 1fr); }
+
+    .soft-two-col .card {
+      background: var(--soft-blue);
+      border-color: #c5d8e8;
+    }
 
     .card,
     .stat-card {
@@ -384,28 +389,8 @@
       color: var(--navy);
       text-align: left;
       padding: 16px 18px;
-      font-size: 1.02rem;
       font-weight: 800;
       cursor: pointer;
-    }
-
-    .accordion-trigger span {
-      flex: 0 0 auto;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 26px;
-      height: 26px;
-      border-radius: 50%;
-      background: var(--soft-blue);
-      color: var(--blue);
-      font-size: 1.1rem;
-      font-weight: 900;
-    }
-
-    .accordion-trigger[aria-expanded="true"] span {
-      background: var(--blue);
-      color: white;
     }
 
     .accordion-trigger[aria-expanded="true"] {
@@ -414,15 +399,7 @@
 
     .accordion-panel {
       display: none;
-      padding: 16px 18px 20px;
-      border-top: 1px solid var(--border);
-      background: var(--panel);
-      line-height: 1.7;
-    }
-
-    .accordion-panel p {
-      margin: 0;
-      font-size: 1rem;
+      padding: 0 18px 18px;
     }
 
     .accordion-trigger[aria-expanded="true"] + .accordion-panel {
@@ -741,7 +718,7 @@
   display: inline-block;
   margin-bottom: 4px;
   color: var(--muted);
-  font-size: 0.78rem;
+  font-size: 0.98rem; /* increased 25% from 0.78rem per feedback */
   font-weight: 800;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -789,7 +766,7 @@
 
 .design-principle {
   display: grid;
-  grid-template-columns: 46px 1fr;
+  grid-template-columns: 1fr 46px; /* swapped per feedback: number sits on the right */
   gap: 14px;
   align-items: start;
   background: var(--panel);
@@ -814,6 +791,8 @@
   background: var(--teal);
   color: white;
   font-weight: 800;
+  order: 2;
+  justify-self: end;
 }
 
 .studio-panel {
@@ -1557,14 +1536,13 @@
 
 /* Version 4: restrained visual enhancements */
 .welcome-banner {
-  min-height: 430px;
+  /* Busy background image removed per feedback; plain gradient keeps focus on the heading. */
+  min-height: 260px;
   margin: 18px 0 28px;
   padding: clamp(24px, 5vw, 54px);
   display: flex;
   align-items: center;
-  background:
-    linear-gradient(90deg, rgba(10, 36, 67, .22), rgba(10, 36, 67, .02)),
-    url("../assets/images/hero/career-expo.svg") center / cover no-repeat;
+  background: linear-gradient(135deg, var(--navy), #24517e);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
   overflow: hidden;
@@ -1638,7 +1616,7 @@
 .sidebar-coach span { font-size: .78rem; color: rgba(255,255,255,.82); }
 .initiative-footer { font-size: .82rem; letter-spacing: .03em; }
 @media (max-width: 640px) {
-  .welcome-banner { min-height: 360px; padding: 18px; align-items: end; }
+  .welcome-banner { min-height: 200px; padding: 18px; align-items: end; }
   .welcome-card { padding: 22px; }
   .employer-tip { grid-template-columns: 1fr; }
 }
@@ -1699,3 +1677,142 @@
     padding: 18px;
   }
 }
+
+/* ===== Matching activity (Section 4) ===== */
+.match-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  margin: 18px 0 8px;
+}
+
+.match-column {
+  display: grid;
+  gap: 10px;
+  align-content: start;
+}
+
+.match-btn {
+  width: 100%;
+  text-align: left;
+  padding: 14px 16px;
+  background: white;
+  color: var(--text);
+  border: 2px solid var(--border);
+  border-radius: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.match-btn:hover {
+  border-color: var(--blue);
+}
+
+.match-btn[aria-pressed="true"] {
+  border-color: var(--blue);
+  background: var(--soft-blue);
+}
+
+.match-btn.matched {
+  border-color: var(--teal);
+  background: var(--soft-teal);
+  color: #0d6666;
+}
+
+.match-btn.matched::after {
+  content: " \2713";
+  font-weight: 900;
+}
+
+.match-btn.wrong-flash {
+  border-color: var(--coral);
+  background: var(--soft-coral);
+}
+
+.match-status {
+  font-weight: 800;
+  color: var(--navy);
+  margin: 4px 0 20px;
+}
+
+@media (max-width: 640px) {
+  .match-grid { grid-template-columns: 1fr; }
+}
+
+/* ===== Recommended Sections carousel (Section 6) ===== */
+.section-carousel .accessibility-grid {
+  display: block;
+}
+
+.section-carousel .accessibility-card {
+  display: none;
+}
+
+.section-carousel .accessibility-card.carousel-active {
+  display: block;
+}
+
+.carousel-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin-top: 16px;
+}
+
+.carousel-status {
+  font-weight: 700;
+  color: var(--navy);
+  font-size: 0.9rem;
+}
+
+/* ===== Design Studio step tabs (Section 8) ===== */
+.step-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 18px 0;
+}
+
+.step-tab {
+  padding: 10px 16px;
+  background: white;
+  color: var(--navy);
+  border: 2px solid var(--border);
+  border-radius: 999px;
+  font-weight: 800;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.step-tab:hover {
+  border-color: var(--blue);
+}
+
+.step-tab[aria-selected="true"] {
+  border-color: var(--teal);
+  background: var(--soft-teal);
+  color: #0d6666;
+}
+
+.step-tab.step-done::before {
+  content: "\2713 ";
+  font-weight: 900;
+}
+
+/* ===== Navigation gate message ===== */
+.nav-gate-message {
+  display: none;
+  margin: 10px 1.25rem 0;
+  padding: 10px 14px;
+  background: var(--soft-coral);
+  color: #87332f;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.nav-gate-message.show {
+  display: block;
+}
+

@@ -7,9 +7,48 @@
     const nextButton = document.getElementById('nextButton');
     const sidebar = document.getElementById('sidebar');
     const menuButton = document.getElementById('menuButton');
+    const gateMessage = document.getElementById('navGateMessage');
 
     let currentScreen = 0;
     const completed = new Set([0]);
+
+    // Screens containing an inline Knowledge Check (.quiz-question[data-inline-question])
+    // must be answered (Check Answer clicked with a selection) before the learner can
+    // move forward past that screen. Answering incorrectly still counts as answered;
+    // the requirement is engagement with the question, not a passing score.
+    const answeredQuestions = new Set();
+
+    function firstUnansweredGate(screenIndex) {
+      const screen = screens[screenIndex];
+      if (!screen) return null;
+      const gates = Array.from(screen.querySelectorAll('.quiz-question[data-inline-question]'));
+      return gates.find(q => !answeredQuestions.has(q.dataset.inlineQuestion)) || null;
+    }
+
+    function showGate(question) {
+      gateMessage.textContent = 'Answer the Knowledge Check above before continuing.';
+      gateMessage.classList.add('show');
+      question.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      const firstOption = question.querySelector('input[type="radio"]');
+      if (firstOption) firstOption.focus({ preventScroll: true });
+    }
+
+    function hideGate() {
+      gateMessage.classList.remove('show');
+      gateMessage.textContent = '';
+    }
+
+    function attemptShowScreen(index) {
+      if (index > currentScreen) {
+        const unanswered = firstUnansweredGate(currentScreen);
+        if (unanswered) {
+          showGate(unanswered);
+          return;
+        }
+      }
+      hideGate();
+      showScreen(index);
+    }
 
     function showScreen(index) {
       if (index < 0 || index >= screens.length) return;
@@ -31,7 +70,7 @@
 
       progressText.textContent = `${Math.round(percent)}% complete`;
       progressFill.style.width = `${percent}%`;
-      screenCount.textContent = `Screen ${current} of ${screens.length}`;
+      screenCount.textContent = `Section ${current} of ${screens.length}`;
       prevButton.disabled = index === 0;
       nextButton.disabled = index === screens.length - 1;
 
@@ -45,16 +84,16 @@
 
     navLinks.forEach(link => {
       link.addEventListener('click', () => {
-        showScreen(Number(link.dataset.screen));
+        attemptShowScreen(Number(link.dataset.screen));
       });
     });
 
     document.querySelectorAll('[data-jump]').forEach(button => {
-      button.addEventListener('click', () => showScreen(Number(button.dataset.jump)));
+      button.addEventListener('click', () => attemptShowScreen(Number(button.dataset.jump)));
     });
 
-    prevButton.addEventListener('click', () => showScreen(currentScreen - 1));
-    nextButton.addEventListener('click', () => showScreen(currentScreen + 1));
+    prevButton.addEventListener('click', () => { hideGate(); showScreen(currentScreen - 1); });
+    nextButton.addEventListener('click', () => attemptShowScreen(currentScreen + 1));
 
     menuButton.addEventListener('click', () => {
       const open = sidebar.classList.toggle('open');
@@ -101,6 +140,11 @@
           return;
         }
 
+        if (question.dataset.inlineQuestion) {
+          answeredQuestions.add(question.dataset.inlineQuestion);
+          hideGate();
+        }
+
         const correct = selected.value === button.dataset.answer;
         feedback.className = `feedback show ${correct ? 'good' : 'bad'}`;
         feedback.textContent = correct
@@ -112,11 +156,21 @@
     // Color and Design (Section 6) sub-stepper: chunks the page into
     // Palette / Typography / Accessibility so the screen isn't one long scroll.
     const designSubsteps = document.getElementById('designSubsteps');
+    const stepTabs = Array.from(document.querySelectorAll('.step-tab'));
+
     if (designSubsteps) {
       const substeps = Array.from(designSubsteps.querySelectorAll('.design-substep'));
 
+      function updateStepTabs(index) {
+        stepTabs.forEach((tab, i) => {
+          tab.setAttribute('aria-selected', String(i === index));
+          tab.classList.toggle('step-done', i < index);
+        });
+      }
+
       function goToSubstep(index) {
         substeps.forEach((step, i) => step.classList.toggle('active', i === index));
+        updateStepTabs(index);
         designSubsteps.scrollIntoView({ behavior: 'auto', block: 'start' });
       }
 
@@ -131,6 +185,15 @@
         button.addEventListener('click', () => {
           const current = substeps.findIndex(step => step.classList.contains('active'));
           goToSubstep(Math.max(current - 1, 0));
+        });
+      });
+
+      // Step tabs are always clickable so a learner can jump directly back to
+      // Color or Typography from Accessibility at any time, including after
+      // navigating away from Section 8 and returning.
+      stepTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          goToSubstep(Number(tab.dataset.gotoSubstep));
         });
       });
     }
@@ -160,6 +223,92 @@
         }
       });
     });
+
+    // Reflective Practice (Section 4) matching activity: click a concept, then
+    // click the question that matches it. Single-pointer clicks only, so this
+    // works the same on touch, mouse, and keyboard (Enter/Space on a focused button).
+    const matchButtons = Array.from(document.querySelectorAll('.match-btn'));
+    const matchStatus = document.getElementById('matchStatus');
+    let selectedMatch = null;
+    let matchedCount = 0;
+
+    matchButtons.forEach(button => {
+      button.setAttribute('aria-pressed', 'false');
+      button.addEventListener('click', () => {
+        if (button.classList.contains('matched')) return;
+
+        if (!selectedMatch) {
+          selectedMatch = button;
+          button.setAttribute('aria-pressed', 'true');
+          return;
+        }
+
+        if (selectedMatch === button) {
+          selectedMatch.setAttribute('aria-pressed', 'false');
+          selectedMatch = null;
+          return;
+        }
+
+        const isPair = selectedMatch.dataset.match === button.dataset.match &&
+                       selectedMatch.parentElement !== button.parentElement;
+
+        if (isPair) {
+          selectedMatch.classList.add('matched');
+          button.classList.add('matched');
+          matchedCount += 1;
+          matchStatus.textContent = matchedCount === matchButtons.length / 2
+            ? 'All matched. Nice work.'
+            : `${matchedCount} of ${matchButtons.length / 2} matched`;
+        } else {
+          button.classList.add('wrong-flash');
+          setTimeout(() => button.classList.remove('wrong-flash'), 500);
+        }
+
+        selectedMatch.setAttribute('aria-pressed', 'false');
+        selectedMatch = null;
+      });
+    });
+
+    // Recommended ePortfolio Sections (Section 6) carousel: shows one card at
+    // a time with explicit Previous/Next controls (no auto-advance).
+    const carouselItems = Array.from(document.querySelectorAll('#sectionsCarouselTrack .accessibility-card'));
+    const carouselPrev = document.getElementById('sectionsCarouselPrev');
+    const carouselNext = document.getElementById('sectionsCarouselNext');
+    const carouselStatus = document.getElementById('sectionsCarouselStatus');
+    let carouselIndex = 0;
+
+    function renderCarousel() {
+      carouselItems.forEach((item, i) => item.classList.toggle('carousel-active', i === carouselIndex));
+      carouselStatus.textContent = `${carouselIndex + 1} of ${carouselItems.length}`;
+      carouselPrev.disabled = carouselIndex === 0;
+      carouselNext.disabled = carouselIndex === carouselItems.length - 1;
+    }
+
+    if (carouselItems.length) {
+      carouselPrev.addEventListener('click', () => {
+        carouselIndex = Math.max(0, carouselIndex - 1);
+        renderCarousel();
+      });
+      carouselNext.addEventListener('click', () => {
+        carouselIndex = Math.min(carouselItems.length - 1, carouselIndex + 1);
+        renderCarousel();
+      });
+      renderCarousel();
+    }
+
+    // Maintaining Professionalism (Section 9) self-audit checklist.
+    const auditBoxes = Array.from(document.querySelectorAll('[data-audit]'));
+    const auditFill = document.getElementById('auditFill');
+    const auditStatus = document.getElementById('auditStatus');
+
+    function updateAudit() {
+      const done = auditBoxes.filter(box => box.checked).length;
+      auditFill.style.width = `${(done / auditBoxes.length) * 100}%`;
+      auditStatus.textContent = `${done} of ${auditBoxes.length} confirmed`;
+    }
+
+    auditBoxes.forEach(box => box.addEventListener('change', updateAudit));
+    if (auditBoxes.length) updateAudit();
 
     // Final Knowledge Check (last section)
     const submitQuizButton = document.getElementById('submitQuizButton');
