@@ -100,19 +100,11 @@
       menuButton.setAttribute('aria-expanded', String(open));
     });
 
-    // Reveal cards (Section 2): only one open at a time, like an accordion.
+    // Reveal cards (Section 2): each card toggles independently.
     document.querySelectorAll('.reveal-card button').forEach(button => {
       button.addEventListener('click', () => {
         const card = button.closest('.reveal-card');
         const willOpen = !card.classList.contains('open');
-
-        card.parentElement.querySelectorAll('.reveal-card').forEach(otherCard => {
-          if (otherCard !== card) {
-            otherCard.classList.remove('open');
-            otherCard.querySelector('button').setAttribute('aria-expanded', 'false');
-          }
-        });
-
         card.classList.toggle('open', willOpen);
         button.setAttribute('aria-expanded', String(willOpen));
       });

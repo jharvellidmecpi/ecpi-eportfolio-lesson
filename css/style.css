@@ -134,7 +134,7 @@
       left: 0;
       bottom: 0;
       width: var(--sidebar-width);
-      background: #102a49;
+      background: var(--navy);
       color: white;
       overflow-y: auto;
       z-index: 150;
@@ -167,8 +167,8 @@
     .nav-link:hover { background: rgba(255,255,255,.06); }
 
     .nav-link.active {
-      background: rgba(140,216,212,.11);
-      border-left-color: #8cd8d4;
+      background: rgba(242,183,5,.14);
+      border-left-color: var(--gold);
       color: white;
     }
 
@@ -185,13 +185,13 @@
     }
 
     .nav-link.active .nav-number {
-      background: #8cd8d4;
-      color: #102a49;
+      background: var(--gold);
+      color: var(--navy);
     }
 
     .nav-link.completed .nav-number {
-      background: var(--teal);
-      color: white;
+      background: var(--gold);
+      color: var(--navy);
     }
 
     .main {
@@ -713,17 +713,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 16px;
+  overflow: hidden;
   text-align: center;
-  background: var(--soft-teal);
-  border: 4px solid var(--teal);
-  color: var(--navy);
-  font-weight: 800;
 }
 
-.profile-placeholder.alternate {
-  background: var(--soft-coral);
-  border-color: var(--coral);
+.profile-placeholder-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
 }
 
 .example-status {
@@ -1136,13 +1134,19 @@
 
 .accessibility-card {
   padding: 19px;
-  background: var(--soft-blue);
-  border-left: 4px solid var(--blue);
+  background: var(--navy);
+  border-left: 4px solid var(--teal);
   border-radius: 9px;
+  color: white;
 }
 
 .accessibility-card h3 {
   margin: 0 0 7px;
+  color: white;
+}
+
+.accessibility-card p {
+  color: rgba(255,255,255,.82);
 }
     
 /* Version 2: project showcase, reflective practice, and interview preparation */
@@ -1797,7 +1801,11 @@
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
-  margin: 18px 0;
+  margin: 0 0 18px;
+}
+
+.step-tabs-heading {
+  margin-top: 34px;
 }
 
 .step-tab {
@@ -1937,7 +1945,7 @@
   background: var(--navy);
   color: white;
   border-radius: 16px;
-  border-top: 4px solid var(--coral);
+  border-top: 4px solid var(--gold);
   display: flex;
   align-items: center;
   justify-content: center;
