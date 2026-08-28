@@ -210,13 +210,6 @@
 
     .screen.active { display: block; }
 
-    .welcome-screen {
-      background-image: linear-gradient(rgba(245, 247, 250, 0.8), rgba(245, 247, 250, 0.88)), url('../assets/images/hero/hero-laptop.png');
-      background-size: cover;
-      background-position: center top;
-      background-repeat: no-repeat;
-    }
-
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(6px); }
       to { opacity: 1; transform: translateY(0); }
@@ -264,6 +257,28 @@
 
     .hero h2, .hero p { color: white; }
     .hero p { color: rgba(255,255,255,.9); }
+
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .hero-text { flex: 1; }
+
+    .hero-image {
+      width: 180px;
+      height: 135px;
+      object-fit: cover;
+      border-radius: 10px;
+      box-shadow: 0 8px 22px rgba(16,42,73,.35);
+      flex: none;
+    }
+
+    @media (max-width: 760px) {
+      .hero-image { display: none; }
+    }
 
     .stat-grid,
     .card-grid,
